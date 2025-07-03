@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>교원 연수 신청 | 아이스크림 AIDT</title>
+  <style>
+    body { margin:0; font-family:'Noto Sans KR',sans-serif; background:#f8f9fa; }
+    .gnb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 64px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .gnb-left {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1e90ff;
+      cursor: pointer;
+      text-decoration: none;
+      flex: 0 0 auto;
+      margin-right: 48px;
+    }
+    .gnb-center {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      position: static;
+    }
+    .gnb-center a {
+      color: #222;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .gnb-center a:hover {
+      color: #1e90ff;
+    }
+    @media (max-width:900px) {
+      .gnb { flex-direction: column; height: auto; padding: 0 10px; }
+      .gnb-center { gap: 16px; }
+    }
+    .teacher-form input,
+    .teacher-form select {
+      height: 56px;
+      padding: 0 16px;
+      font-size: 1.15rem;
+      border-radius: 12px;
+      border: 1.5px solid #e0e0e0;
+      box-sizing: border-box;
+      background: #fff;
+      width: 100%;
+      margin-top: 8px;
+    }
+    .teacher-form textarea {
+      height: 120px;
+      padding: 16px;
+      font-size: 1.15rem;
+      border-radius: 12px;
+      border: 1.5px solid #e0e0e0;
+      box-sizing: border-box;
+      background: #fff;
+      width: 100%;
+      margin-top: 8px;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+  <nav class="gnb">
+    <a class="gnb-left" href="index.html">아이스크림 AIDT</a>
+    <div class="gnb-center">
+      <a href="index.html">AIDT 소개</a>
+      <a href="ai-tech.html">AI 기술</a>
+      <div class="gnb-dropdown">
+        <a href="web-expo.html" class="dropdown-toggle" tabindex="-1">웹전시관</a>
+      </div>
+      <a href="contact.html">문의하기</a>
+      <a href="teacher-training.html" style="color:#7b6eea;font-weight:700;">교원 연수</a>
+    </div>
+  </nav>
+  <main style="max-width:900px;margin:60px auto 80px auto;padding:0 24px;box-sizing:border-box;">
+    <div style="background:#fffbe6; border:1.5px solid #ffe082; border-radius:16px; padding:32px 28px 24px 28px; margin-bottom:36px; box-shadow:0 2px 12px rgba(255,193,7,0.08); display:flex; gap:18px; align-items:flex-start; width:100%; box-sizing:border-box;">
+      <span style="font-size:2.1rem; color:#ffc107; margin-right:8px;">⚠️</span>
+      <div style="font-size:1.08rem; color:#444; line-height:1.8;">
+        <b style="font-size:1.13rem; color:#b28704;">꼭 읽어주세요</b><br>
+        - 본 이벤트는 <b>교사인증을 완료한 초등학교 수학/영어 선생님</b> 대상 이벤트입니다.<br>
+        - <b>1인 1회</b> 신청하실 수 있습니다.<br>
+        - <b>선정되신 선생님께 개별 연락</b>을 드립니다. 휴대폰번호를 꼭 확인해 주시기 바랍니다.<br>
+        - <b>컨설팅 신청은 최소 1주 전부터</b> 가능하며, <b>주말 및 공휴일, 일부 날짜는 진행 일정에서 제외</b>됩니다.
+      </div>
+    </div>
+    <form class="teacher-form" style="background:#fff; border-radius:16px; box-shadow:0 2px 12px rgba(30,201,255,0.06); padding:32px 28px; display:flex; flex-direction:column; gap:28px; width:100%; box-sizing:border-box;">
+      <div>
+        <label for="teacher-name" style="font-weight:600; color:#333; font-size:1.13rem;">이름 <span style="color:#e67e22;">*</span></label><br>
+        <input type="text" id="teacher-name" name="teacher-name" required style="width:100%; padding:18px 16px; border-radius:12px; border:1.5px solid #e0e0e0; font-size:1.15rem; margin-top:8px;">
+      </div>
+      <div>
+        <label for="school-name" style="font-weight:600; color:#333; font-size:1.13rem;">학교명 <span style="color:#e67e22;">*</span></label><br>
+        <input type="text" id="school-name" name="school-name" required style="width:100%; padding:18px 16px; border-radius:12px; border:1.5px solid #e0e0e0; font-size:1.15rem; margin-top:8px;">
+      </div>
+      <div>
+        <label for="subject" style="font-weight:600; color:#333; font-size:1.13rem;">과목 <span style="color:#e67e22;">*</span></label><br>
+        <select id="subject" name="subject" required style="width:100%; padding:18px 16px; border-radius:12px; border:1.5px solid #e0e0e0; font-size:1.15rem; margin-top:8px;">
+          <option value="">선택</option>
+          <option value="수학">수학</option>
+          <option value="영어">영어</option>
+        </select>
+      </div>
+      <div>
+        <label for="phone" style="font-weight:600; color:#333; font-size:1.13rem;">휴대폰번호 <span style="color:#e67e22;">*</span></label><br>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" placeholder="010-1234-5678" style="width:100%; padding:18px 16px; border-radius:12px; border:1.5px solid #e0e0e0; font-size:1.15rem; margin-top:8px;">
+      </div>
+      <div>
+        <label for="email" style="font-weight:600; color:#333; font-size:1.13rem;">이메일 <span style="color:#e67e22;">*</span></label><br>
+        <input type="email" id="email" name="email" required style="width:100%; padding:18px 16px; border-radius:12px; border:1.5px solid #e0e0e0; font-size:1.15rem; margin-top:8px;">
+      </div>
+      <div>
+        <label for="date" style="font-weight:600; color:#333; font-size:1.13rem;">컨설팅 희망일 <span style="color:#e67e22;">*</span></label><br>
+        <input type="date" id="date" name="date" required style="width:100%; padding:18px 16px; border-radius:12px; border:1.5px solid #e0e0e0; font-size:1.15rem; margin-top:8px;">
+      </div>
+      <div>
+        <label for="request" style="font-weight:600; color:#333; font-size:1.13rem;">기타 요청사항</label><br>
+        <textarea id="request" name="request" rows="4" style="width:100%; padding:18px 16px; border-radius:12px; border:1.5px solid #e0e0e0; font-size:1.15rem; margin-top:8px;"></textarea>
+      </div>
+      <button type="submit" style="background:#7b6eea; color:#fff; font-size:1.18rem; font-weight:700; border:none; border-radius:12px; padding:20px 0; margin-top:10px; box-shadow:0 2px 8px rgba(123,110,234,0.10); cursor:pointer; transition:background 0.18s;">신청하기</button>
+    </form>
+  </main>
+</body>
+</html> 
