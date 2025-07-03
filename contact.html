@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>문의하기 | 아이스크림 AIDT</title>
+  <title>AI 디지털교과서 지원센터 | 아이스크림 AIDT</title>
   <style>
     body { margin:0; font-family:'Noto Sans KR',sans-serif; background:#f8f9fa; }
     .gnb {
@@ -42,120 +42,138 @@
     .gnb-center a:hover {
       color: #1e90ff;
     }
-    .contact-tabs {
-      display:flex; justify-content:center; gap:32px; margin:48px 0 32px 0;
+    .support-main {
+      max-width: 800px;
+      margin: 60px auto 60px auto;
+      padding: 0 20px;
+      box-sizing: border-box;
     }
-    .contact-tab {
-      background:rgba(255,255,255,0.55); backdrop-filter:blur(8px);
-      border-radius:16px; box-shadow:0 2px 8px rgba(123,110,234,0.08);
-      padding:18px 38px; font-size:1.15rem; font-weight:600; color:#7b6eea;
-      cursor:pointer; border:none; outline:none; transition:background 0.2s, color 0.2s;
+    .support-title {
+      font-size: 2.1rem;
+      font-weight: bold;
+      color: #2d3a8c;
+      margin-bottom: 12px;
+      text-align: center;
     }
-    .contact-tab.active, .contact-tab:hover {
-      background:#7b6eea; color:#fff;
+    .support-desc {
+      font-size: 1.13rem;
+      color: #444;
+      text-align: center;
+      margin-bottom: 38px;
     }
-    .contact-section {
-      display:none; max-width:700px; margin:0 auto 40px auto; background:#fff; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:40px 32px;
+    .support-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin-bottom: 40px;
     }
-    .contact-section.active { display:block; }
-    @media (max-width:900px) {
-      .gnb-center {
-        position: static;
-        left: unset;
-        top: unset;
-        transform: none;
-        gap: 16px;
-      }
-      .dropdown-content {
-        left: 0;
-        min-width: 100px;
-      }
-    }
-    @media (max-width:700px) {
-      .contact-tabs { gap:10px; }
-      .contact-tab { padding:12px 10px; font-size:1rem; }
-      .contact-section { padding:24px 8px; }
-      .gnb-left { margin-left:10px; }
-    }
-    .gnb-dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      left: 0;
-      top: 100%;
-      min-width: 120px;
+    .support-card {
       background: #fff;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      border-radius: 10px;
-      z-index: 200;
-      padding: 8px 0;
-      margin-top: 0;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(30,201,255,0.08);
+      padding: 36px 32px 32px 32px;
+      min-width: 220px;
+      max-width: 320px;
+      flex: 1 1 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: box-shadow 0.18s, transform 0.18s;
     }
-    .dropdown-content a {
-      display: block;
-      padding: 10px 20px;
-      color: #222;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: background 0.18s, color 0.18s;
-      border-radius: 6px;
+    .support-card:hover {
+      box-shadow: 0 8px 32px rgba(30,201,255,0.16);
+      transform: translateY(-4px) scale(1.03);
     }
-    .dropdown-content a:hover {
-      background: #f0f4ff;
-      color: #1e90ff;
-    }
-    .gnb-dropdown:hover .dropdown-content,
-    .gnb-dropdown:focus-within .dropdown-content {
-      display: block;
-    }
-    .cs-center-btn {
-      display: inline-block;
-      background: #2d3a8c;
-      color: #fff;
-      font-size: 1.08rem;
-      font-weight: 600;
-      padding: 12px 32px;
-      border-radius: 10px;
+    .support-card .icon {
+      font-size: 2.5rem;
       margin-bottom: 18px;
-      text-decoration: none;
-      box-shadow: 0 2px 8px rgba(45,58,140,0.10);
-      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      color: #1ec9a8;
     }
-    .cs-center-btn:hover {
-      background: #4f8cff;
-      color: #fff;
-      box-shadow: 0 4px 16px rgba(45,58,140,0.18);
+    .support-card .title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #2d3a8c;
+      margin-bottom: 10px;
     }
-    .floating-apply-btn {
-      position: fixed;
-      right: 32px;
-      bottom: 32px;
-      z-index: 500;
+    .support-card .desc {
+      font-size: 1.01rem;
+      color: #555;
+      margin-bottom: 18px;
+    }
+    .support-card .support-btn {
       background: linear-gradient(90deg,#7b6eea 0%,#1ec9a8 100%);
       color: #fff;
-      font-size: 1.13rem;
-      font-weight: 700;
-      padding: 20px 38px;
-      border-radius: 32px;
-      box-shadow: 0 4px 24px rgba(123,110,234,0.18);
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 10px;
       border: none;
       cursor: pointer;
-      transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
-      outline: none;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      box-shadow: 0 2px 8px rgba(123,110,234,0.10);
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      text-decoration: none;
+      display: inline-block;
     }
-    .floating-apply-btn:hover {
+    .support-card .support-btn:hover {
       background: linear-gradient(90deg,#1ec9a8 0%,#7b6eea 100%);
-      box-shadow: 0 8px 32px rgba(30,201,255,0.18);
-      transform: translateY(-2px) scale(1.04);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(30,201,255,0.18);
     }
-    @media (max-width: 700px) {
-      .floating-apply-btn { right: 12px; bottom: 12px; padding: 14px 18px; font-size: 1rem; }
+    .support-contact {
+      background: #f8f9fa;
+      border-radius: 14px;
+      padding: 24px 18px;
+      text-align: center;
+      color: #333;
+      font-size: 1.08rem;
+      margin-bottom: 18px;
+      box-shadow: 0 1px 6px rgba(30,201,255,0.06);
+    }
+    .support-contact strong {
+      color: #1e90ff;
+      font-size: 1.18rem;
+      font-weight: 700;
+    }
+    @media (max-width: 900px) {
+      .support-cards { flex-direction: column; gap: 18px; }
+      .support-card { max-width: 100%; min-width: 0; }
+    }
+    .support-card-row {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
+      flex-wrap: nowrap;
+    }
+    .support-card {
+      flex: 1 1 320px;
+      min-width: 260px;
+      max-width: 420px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(30,201,255,0.08);
+      padding: 38px 28px 32px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .support-card.bg {
+      background: #f8f9fa;
+    }
+    @media (max-width: 767px) {
+      .support-card-row {
+        flex-direction: column;
+        gap: 18px;
+        max-width: 98vw;
+      }
+      .support-card {
+        max-width: 100%;
+        min-width: 0;
+      }
     }
   </style>
 </head>
@@ -168,133 +186,64 @@
       <div class="gnb-dropdown">
         <a href="web-expo.html" class="dropdown-toggle" tabindex="-1">웹전시관</a>
       </div>
-      <a href="contact.html">문의하기</a>
+      <a href="contact.html" style="color:#7b6eea;font-weight:700;">문의하기</a>
       <a href="teacher-training.html">교원 연수</a>
     </div>
   </nav>
-  <div class="contact-tabs">
-    <button class="contact-tab active" data-tab="faq">AIDT FAQ</button>
-    <button class="contact-tab" data-tab="suggest">AIDT 건의하기</button>
-    <button class="contact-tab" data-tab="board">질문하기 게시판</button>
-  </div>
-  <section class="contact-section active" id="tab-faq">
-    <a href="https://ktbook.metahub.co.kr:25750/iscream/" target="_blank" class="cs-center-btn">AIDT CS공동센터</a>
-    <h2 style="color:#7b6eea; font-size:1.3rem; margin-bottom:18px;">AIDT FAQ</h2>
-    <div style="display:flex; gap:12px; margin-bottom:24px; align-items:center;">
-      <input id="faq-search" type="text" placeholder="FAQ 검색어를 입력하세요" style="flex:1; padding:12px; border-radius:8px; border:1px solid #ddd; font-size:1rem;">
-      <button id="faq-search-btn" style="background:#7b6eea; color:#fff; border:none; border-radius:8px; padding:12px 22px; font-size:1rem; font-weight:600; cursor:pointer;">검색</button>
+  <main class="support-main">
+    <div class="support-title">AI 디지털교과서 지원센터</div>
+    <div class="support-desc">AI 디지털교과서에 대한 궁금증을 빠르게 해결해 드립니다.</div>
+    <div class="support-tabs" style="display:flex;justify-content:center;gap:32px;margin-bottom:36px;">
+      <button class="support-tab active" data-tab="faq" style="background:#fff; border:none; border-radius:14px 14px 0 0; font-size:1.13rem; font-weight:700; color:#2d3a8c; padding:18px 38px; box-shadow:0 2px 8px rgba(30,201,255,0.08); cursor:pointer; transition:background 0.18s, color 0.18s;">자주하는 질문(FAQ)</button>
+      <button class="support-tab" data-tab="inquiry" style="background:#fff; border:none; border-radius:14px 14px 0 0; font-size:1.13rem; font-weight:700; color:#2d3a8c; padding:18px 38px; box-shadow:0 2px 8px rgba(30,201,255,0.08); cursor:pointer; transition:background 0.18s, color 0.18s;">건의하기</button>
+      <button class="support-tab" data-tab="call" style="background:#fff; border:none; border-radius:14px 14px 0 0; font-size:1.13rem; font-weight:700; color:#2d3a8c; padding:18px 38px; box-shadow:0 2px 8px rgba(30,201,255,0.08); cursor:pointer; transition:background 0.18s, color 0.18s;">질문하기</button>
     </div>
-    <ul id="faq-list" style="padding-left:0; list-style:none;">
-      <li class="faq-item" style="margin-bottom:18px;"><b>Q. AIDT란 무엇인가요?</b><br>AI 기반 디지털 교과서로, 학생 맞춤형 학습과 다양한 AI 기능을 제공합니다.</li>
-      <li class="faq-item" style="margin-bottom:18px;"><b>Q. AIDT를 체험해 볼 수 있나요?</b><br>네, 무료 체험 신청을 통해 직접 AIDT를 경험하실 수 있습니다.</li>
-      <li class="faq-item" style="margin-bottom:18px;"><b>Q. AIDT의 주요 기능은 무엇인가요?</b><br>맞춤형 학습, AI 진단평가, 실시간 피드백, 다양한 멀티미디어 자료 제공 등입니다.</li>
-      <li class="faq-item" style="margin-bottom:18px;"><b>Q. AIDT는 어떤 학교에서 사용할 수 있나요?</b><br>전국 초등학교 및 중학교에서 도입 및 활용이 가능합니다.</li>
-      <li class="faq-item" style="margin-bottom:18px;"><b>Q. 현장 교육은 어떻게 신청하나요?</b><br>문의하기 메뉴의 'AIDT 건의하기' 또는 고객센터로 연락해 주세요.</li>
-      <li class="faq-item" style="margin-bottom:18px;"><b>Q. AIDT 관련 문의는 어디로 하나요?</b><br>문의하기 메뉴 또는 대표번호(1661-0777)로 연락해 주세요.</li>
-      <li class="faq-item" style="margin-bottom:18px;"><b>Q. AIDT 자문단은 어떻게 지원하나요?</b><br>문의하기 메뉴의 'AIDT 건의하기'에서 지원 가능합니다.</li>
-      <li class="faq-item" style="margin-bottom:18px;"><b>Q. AIDT의 개인정보 보호는 어떻게 이루어지나요?</b><br>엄격한 보안 정책과 개인정보 보호법을 준수하여 운영됩니다.</li>
-    </ul>
-    <div id="faq-noresult" style="display:none; color:#e74c3c; text-align:center; margin-top:24px;">검색 결과가 없습니다.</div>
-  </section>
-  <section class="contact-section" id="tab-suggest">
-    <h2 style="color:#7b6eea; font-size:1.3rem; margin-bottom:18px;">AIDT 건의하기</h2>
-    <form style="display:flex; flex-direction:column; gap:18px;">
-      <input type="text" placeholder="이름" required style="padding:12px; border-radius:8px; border:1px solid #ddd;">
-      <input type="email" placeholder="이메일" required style="padding:12px; border-radius:8px; border:1px solid #ddd;">
-      <textarea placeholder="건의 내용을 입력해 주세요." required style="padding:12px; border-radius:8px; border:1px solid #ddd; min-height:120px;"></textarea>
-      <button type="submit" style="background:#7b6eea; color:#fff; border:none; border-radius:8px; padding:14px 0; font-size:1.08rem; font-weight:bold; cursor:pointer;">건의하기 제출</button>
-    </form>
-  </section>
-  <section class="contact-section" id="tab-board">
-    <h2 style="color:#7b6eea; font-size:1.3rem; margin-bottom:18px;">질문하기</h2>
-    <div style="overflow-x:auto;">
-      <table style="width:100%; border-collapse:collapse; min-width:480px;">
-        <thead>
-          <tr style="background:#f4f6fa; color:#7b6eea;">
-            <th style="padding:12px 6px; border-bottom:2px solid #eaeaea; font-weight:700;">번호</th>
-            <th style="padding:12px 6px; border-bottom:2px solid #eaeaea; font-weight:700; text-align:left;">제목</th>
-            <th style="padding:12px 6px; border-bottom:2px solid #eaeaea; font-weight:700;">작성자</th>
-            <th style="padding:12px 6px; border-bottom:2px solid #eaeaea; font-weight:700;">작성일</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom:1px solid #f0f0f0;">
-            <td style="text-align:center; padding:10px 6px;">5</td>
-            <td style="padding:10px 6px; text-align:left;">AIDT 체험 후기 남깁니다</td>
-            <td style="text-align:center; padding:10px 6px;">김교사</td>
-            <td style="text-align:center; padding:10px 6px;">2024-06-01</td>
-          </tr>
-          <tr style="border-bottom:1px solid #f0f0f0;">
-            <td style="text-align:center; padding:10px 6px;">4</td>
-            <td style="padding:10px 6px; text-align:left;">AI 기능 관련 문의</td>
-            <td style="text-align:center; padding:10px 6px;">이선생</td>
-            <td style="text-align:center; padding:10px 6px;">2024-05-30</td>
-          </tr>
-          <tr style="border-bottom:1px solid #f0f0f0;">
-            <td style="text-align:center; padding:10px 6px;">3</td>
-            <td style="padding:10px 6px; text-align:left;">무료 체험 신청 방법</td>
-            <td style="text-align:center; padding:10px 6px;">박샘</td>
-            <td style="text-align:center; padding:10px 6px;">2024-05-28</td>
-          </tr>
-          <tr style="border-bottom:1px solid #f0f0f0;">
-            <td style="text-align:center; padding:10px 6px;">2</td>
-            <td style="padding:10px 6px; text-align:left;">현장 연수 일정 문의</td>
-            <td style="text-align:center; padding:10px 6px;">최교사</td>
-            <td style="text-align:center; padding:10px 6px;">2024-05-25</td>
-          </tr>
-          <tr style="border-bottom:1px solid #f0f0f0;">
-            <td style="text-align:center; padding:10px 6px;">1</td>
-            <td style="padding:10px 6px; text-align:left;">AIDT 자문단 지원 문의</td>
-            <td style="text-align:center; padding:10px 6px;">홍길동</td>
-            <td style="text-align:center; padding:10px 6px;">2024-05-20</td>
-          </tr>
-        </tbody>
-      </table>
+    <div id="support-tab-content">
+      <section class="support-tab-panel" data-tab="faq" style="display:block; background:#fff; border-radius:0 0 18px 18px; box-shadow:0 2px 12px rgba(30,201,255,0.08); padding:36px 32px 32px 32px;">
+        <h3 style="color:#2d3a8c; font-size:1.18rem; font-weight:bold; margin-bottom:18px;">자주하는 질문(FAQ)</h3>
+        <ul style="padding-left:0; list-style:none; max-width:600px; margin:0 auto;">
+          <li style="margin-bottom:18px;"><b>Q. AIDT란 무엇인가요?</b><br>AI 기반 디지털 교과서로, 학생 맞춤형 학습과 다양한 AI 기능을 제공합니다.</li>
+          <li style="margin-bottom:18px;"><b>Q. AIDT를 체험해 볼 수 있나요?</b><br>네, 무료 체험 신청을 통해 직접 AIDT를 경험하실 수 있습니다.</li>
+          <li style="margin-bottom:18px;"><b>Q. AIDT의 주요 기능은 무엇인가요?</b><br>맞춤형 학습, AI 진단평가, 실시간 피드백, 다양한 멀티미디어 자료 제공 등입니다.</li>
+          <li style="margin-bottom:18px;"><b>Q. AIDT는 어떤 학교에서 사용할 수 있나요?</b><br>전국 초등학교 및 중학교에서 도입 및 활용이 가능합니다.</li>
+          <li style="margin-bottom:18px;"><b>Q. 현장 교육은 어떻게 신청하나요?</b><br>문의하기 메뉴의 'AIDT 건의하기' 또는 고객센터로 연락해 주세요.</li>
+          <li style="margin-bottom:18px;"><b>Q. AIDT 관련 문의는 어디로 하나요?</b><br>문의하기 메뉴 또는 대표번호(1661-0777)로 연락해 주세요.</li>
+          <li style="margin-bottom:18px;"><b>Q. AIDT 자문단은 어떻게 지원하나요?</b><br>문의하기 메뉴의 'AIDT 건의하기'에서 지원 가능합니다.</li>
+          <li style="margin-bottom:18px;"><b>Q. AIDT의 개인정보 보호는 어떻게 이루어지나요?</b><br>엄격한 보안 정책과 개인정보 보호법을 준수하여 운영됩니다.</li>
+        </ul>
+      </section>
+      <section class="support-tab-panel" data-tab="inquiry" style="display:none; background:#fff; border-radius:0 0 18px 18px; box-shadow:0 2px 12px rgba(30,201,255,0.08); padding:36px 32px 32px 32px;">
+        <h3 style="color:#2d3a8c; font-size:1.18rem; font-weight:bold; margin-bottom:18px;">건의하기</h3>
+        <form style="max-width:500px; margin:0 auto; display:flex; flex-direction:column; gap:18px;">
+          <input type="text" placeholder="이름" required style="padding:14px 12px; border-radius:8px; border:1.2px solid #e0e0e0; font-size:1.05rem;">
+          <input type="email" placeholder="이메일" required style="padding:14px 12px; border-radius:8px; border:1.2px solid #e0e0e0; font-size:1.05rem;">
+          <textarea placeholder="건의 내용을 입력해 주세요." required style="padding:14px 12px; border-radius:8px; border:1.2px solid #e0e0e0; font-size:1.05rem; min-height:120px;"></textarea>
+          <button type="submit" style="background:#7b6eea; color:#fff; border:none; border-radius:8px; padding:16px 0; font-size:1.08rem; font-weight:bold; cursor:pointer; margin-top:8px;">건의하기 제출</button>
+        </form>
+      </section>
+      <section class="support-tab-panel" data-tab="call" style="display:none; background:#fff; border-radius:0 0 18px 18px; box-shadow:0 2px 12px rgba(30,201,255,0.08); padding:48px 0 48px 0;">
+        <div class="support-card-row">
+          <div class="support-card bg">
+            <div style="font-size:2.8rem; margin-bottom:18px; color:#2d3a8c;">📝</div>
+            <div style="font-size:1.18rem; font-weight:700; color:#2d3a8c; margin-bottom:18px;">1:1 온라인 게시판 문의</div>
+            <div style="font-size:1.05rem; color:#444; margin-bottom:22px;">AI 디지털교과서 관련 문의를 게시판에 남겨주시면 신속하게 답변해 드립니다.</div>
+            <a href="https://ktbook.metahub.co.kr:25750/iscream/" target="_blank" rel="noopener" style="background:linear-gradient(90deg,#7b6eea 0%,#1ec9a8 100%); color:#fff; font-size:1.13rem; font-weight:700; padding:16px 38px; border-radius:12px; border:none; box-shadow:0 2px 8px rgba(123,110,234,0.10); text-decoration:none; display:inline-block;">바로가기</a>
+          </div>
+          <div class="support-card">
+            <div style="font-size:2.8rem; margin-bottom:18px; color:#1ec9a8;">☎️</div>
+            <div style="font-size:1.45rem; color:#1e90ff; font-weight:800; margin-bottom:10px; letter-spacing:1px;">1661-0777</div>
+            <div style="font-size:1.08rem; color:#444; margin-bottom:18px;">AI 디지털교과서에 대한 궁금증을 빠르게 해결해 드립니다.<br>평일 09:00~18:00 (점심 12:00~13:00)</div>
+            <a href="tel:1661-0777" style="background:linear-gradient(90deg,#7b6eea 0%,#1ec9a8 100%); color:#fff; font-size:1.18rem; font-weight:700; padding:18px 48px; border-radius:14px; border:none; box-shadow:0 2px 8px rgba(123,110,234,0.10); text-decoration:none; display:inline-block; margin-top:10px;">빠른 전화상담</a>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
-  <button class="floating-apply-btn" onclick="location.href='teacher-training.html'">
-    맞춤 교원 연수 신청하세요!
-  </button>
-  <script>
-    // 탭 전환 스크립트
-    const tabs = document.querySelectorAll('.contact-tab');
-    const sections = {
-      faq: document.getElementById('tab-faq'),
-      suggest: document.getElementById('tab-suggest'),
-      board: document.getElementById('tab-board')
-    };
-    tabs.forEach(tab => {
-      tab.addEventListener('click', function() {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        Object.values(sections).forEach(sec => sec.classList.remove('active'));
-        sections[tab.dataset.tab].classList.add('active');
-      });
-    });
-    // FAQ 검색 기능
-    const faqSearch = document.getElementById('faq-search');
-    const faqSearchBtn = document.getElementById('faq-search-btn');
-    const faqList = document.getElementById('faq-list');
-    const faqItems = Array.from(document.querySelectorAll('.faq-item'));
-    const faqNoResult = document.getElementById('faq-noresult');
-    function filterFAQ() {
-      const keyword = faqSearch.value.trim().toLowerCase();
-      let found = false;
-      faqItems.forEach(item => {
-        if (item.textContent.toLowerCase().includes(keyword)) {
-          item.style.display = '';
-          found = true;
-        } else {
-          item.style.display = 'none';
-        }
-      });
-      faqNoResult.style.display = found ? 'none' : '';
-    }
-    faqSearchBtn.addEventListener('click', filterFAQ);
-    faqSearch.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') filterFAQ();
-    });
-  </script>
+    <div class="support-contact" style="margin-top:40px;">
+      <strong>원격지원/컨설팅</strong>이 필요하신가요?<br>
+      1:1 맞춤 컨설팅, 원격지원 등 다양한 지원 서비스를 제공합니다.<br>
+      <a href="teacher-training.html" class="support-btn" style="margin-top:14px;">맞춤 교원 연수 신청</a>
+    </div>
+  </main>
 
   <!-- 푸터 -->
   <footer style="background: #e9ecef; padding: 40px 0 20px 0; margin-top: 60px; border-top: 1px solid #dee2e6;">
@@ -383,5 +332,18 @@
       }
     }
   </style>
+  <script>
+    // 탭 전환 스크립트
+    const supportTabs = document.querySelectorAll('.support-tab');
+    const supportPanels = document.querySelectorAll('.support-tab-panel');
+    supportTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        supportTabs.forEach(t => t.classList.remove('active'));
+        supportPanels.forEach(panel => panel.style.display = 'none');
+        this.classList.add('active');
+        document.querySelector('.support-tab-panel[data-tab="' + this.dataset.tab + '"]').style.display = 'block';
+      });
+    });
+  </script>
 </body>
 </html> 
