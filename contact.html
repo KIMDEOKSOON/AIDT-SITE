@@ -43,7 +43,7 @@
       color: #1e90ff;
     }
     .support-main {
-      max-width: 800px;
+      max-width: 1400px;
       margin: 60px auto 60px auto;
       padding: 0 20px;
       box-sizing: border-box;
@@ -144,7 +144,7 @@
       display: flex;
       gap: 32px;
       justify-content: center;
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
       flex-wrap: nowrap;
     }
@@ -175,13 +175,40 @@
         min-width: 0;
       }
     }
+    .floating-apply-btn {
+      position: fixed;
+      right: 32px;
+      bottom: 32px;
+      z-index: 500;
+      background: linear-gradient(90deg,#7b6eea 0%,#1ec9a8 100%);
+      color: #fff;
+      font-size: 1.13rem;
+      font-weight: 700;
+      padding: 20px 38px;
+      border-radius: 32px;
+      box-shadow: 0 4px 24px rgba(123,110,234,0.18);
+      border: none;
+      cursor: pointer;
+      transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+      outline: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .floating-apply-btn:hover {
+      background: linear-gradient(90deg,#1ec9a8 0%,#7b6eea 100%);
+      box-shadow: 0 8px 32px rgba(30,201,255,0.18);
+      transform: translateY(-2px) scale(1.04);
+    }
+    @media (max-width: 700px) {
+      .floating-apply-btn { right: 12px; bottom: 12px; padding: 14px 18px; font-size: 1rem; }
+    }
   </style>
 </head>
 <body>
   <nav class="gnb">
     <a class="gnb-left" href="index.html">아이스크림 AIDT</a>
     <div class="gnb-center">
-      <a href="index.html">AIDT 소개</a>
       <a href="ai-tech.html">AI 기술</a>
       <div class="gnb-dropdown">
         <a href="web-expo.html" class="dropdown-toggle" tabindex="-1">웹전시관</a>
@@ -193,15 +220,18 @@
   <main class="support-main">
     <div class="support-title">AI 디지털교과서 지원센터</div>
     <div class="support-desc">AI 디지털교과서에 대한 궁금증을 빠르게 해결해 드립니다.</div>
-    <div class="support-tabs" style="display:flex;justify-content:center;gap:32px;margin-bottom:36px;">
-      <button class="support-tab active" data-tab="faq" style="background:#fff; border:none; border-radius:14px 14px 0 0; font-size:1.13rem; font-weight:700; color:#2d3a8c; padding:18px 38px; box-shadow:0 2px 8px rgba(30,201,255,0.08); cursor:pointer; transition:background 0.18s, color 0.18s;">자주하는 질문(FAQ)</button>
-      <button class="support-tab" data-tab="inquiry" style="background:#fff; border:none; border-radius:14px 14px 0 0; font-size:1.13rem; font-weight:700; color:#2d3a8c; padding:18px 38px; box-shadow:0 2px 8px rgba(30,201,255,0.08); cursor:pointer; transition:background 0.18s, color 0.18s;">건의하기</button>
-      <button class="support-tab" data-tab="call" style="background:#fff; border:none; border-radius:14px 14px 0 0; font-size:1.13rem; font-weight:700; color:#2d3a8c; padding:18px 38px; box-shadow:0 2px 8px rgba(30,201,255,0.08); cursor:pointer; transition:background 0.18s, color 0.18s;">질문하기</button>
+    <div class="support-tabs" style="display:flex;justify-content:center;gap:0;margin-bottom:0;background:#f8f9fa;border-radius:18px 18px 0 0;padding:8px 8px 0 8px;">
+      <button class="support-tab active" data-tab="faq" style="background:#fff; border:none; border-radius:14px 14px 0 0; font-size:1.13rem; font-weight:700; color:#7b6eea; padding:20px 40px; box-shadow:0 2px 8px rgba(123,110,234,0.15); cursor:pointer; transition:all 0.3s; position:relative; margin-right:4px; border-bottom:3px solid #7b6eea;">자주하는 질문(FAQ)</button>
+      <button class="support-tab" data-tab="inquiry" style="background:#e9ecef; border:none; border-radius:14px 14px 0 0; font-size:1.13rem; font-weight:600; color:#1ec9a8; padding:20px 40px; cursor:pointer; transition:all 0.3s; position:relative; margin-right:4px; border-bottom:3px solid transparent;">건의하기</button>
+      <button class="support-tab" data-tab="call" style="background:#e9ecef; border:none; border-radius:14px 14px 0 0; font-size:1.13rem; font-weight:600; color:#1e90ff; padding:20px 40px; cursor:pointer; transition:all 0.3s; position:relative; border-bottom:3px solid transparent;">질문하기</button>
     </div>
     <div id="support-tab-content">
-      <section class="support-tab-panel" data-tab="faq" style="display:block; background:#fff; border-radius:0 0 18px 18px; box-shadow:0 2px 12px rgba(30,201,255,0.08); padding:36px 32px 32px 32px;">
-        <h3 style="color:#2d3a8c; font-size:1.18rem; font-weight:bold; margin-bottom:18px;">자주하는 질문(FAQ)</h3>
-        <ul style="padding-left:0; list-style:none; max-width:600px; margin:0 auto;">
+      <section class="support-tab-panel" data-tab="faq" style="display:block; background:#fff; border-radius:0 0 18px 18px; box-shadow:0 4px 20px rgba(30,201,255,0.12); padding:48px 40px 40px 40px; border-top:3px solid #7b6eea;">
+        <h3 style="color:#2d3a8c; font-size:1.4rem; font-weight:bold; margin-bottom:32px; text-align:center; position:relative;">
+          <span style="background:#7b6eea; color:#fff; padding:8px 16px; border-radius:20px; font-size:1.1rem; margin-right:12px;">📋</span>
+          자주하는 질문(FAQ)
+        </h3>
+        <ul style="padding-left:0; list-style:none; max-width:800px; margin:0 auto;">
           <li style="margin-bottom:18px;"><b>Q. AIDT란 무엇인가요?</b><br>AI 기반 디지털 교과서로, 학생 맞춤형 학습과 다양한 AI 기능을 제공합니다.</li>
           <li style="margin-bottom:18px;"><b>Q. AIDT를 체험해 볼 수 있나요?</b><br>네, 무료 체험 신청을 통해 직접 AIDT를 경험하실 수 있습니다.</li>
           <li style="margin-bottom:18px;"><b>Q. AIDT의 주요 기능은 무엇인가요?</b><br>맞춤형 학습, AI 진단평가, 실시간 피드백, 다양한 멀티미디어 자료 제공 등입니다.</li>
@@ -212,28 +242,43 @@
           <li style="margin-bottom:18px;"><b>Q. AIDT의 개인정보 보호는 어떻게 이루어지나요?</b><br>엄격한 보안 정책과 개인정보 보호법을 준수하여 운영됩니다.</li>
         </ul>
       </section>
-      <section class="support-tab-panel" data-tab="inquiry" style="display:none; background:#fff; border-radius:0 0 18px 18px; box-shadow:0 2px 12px rgba(30,201,255,0.08); padding:36px 32px 32px 32px;">
-        <h3 style="color:#2d3a8c; font-size:1.18rem; font-weight:bold; margin-bottom:18px;">건의하기</h3>
-        <form style="max-width:500px; margin:0 auto; display:flex; flex-direction:column; gap:18px;">
+      <section class="support-tab-panel" data-tab="inquiry" style="display:none; background:#fff; border-radius:0 0 18px 18px; box-shadow:0 4px 20px rgba(30,201,255,0.12); padding:48px 40px 40px 40px; border-top:3px solid #1ec9a8;">
+        <h3 style="color:#2d3a8c; font-size:1.4rem; font-weight:bold; margin-bottom:32px; text-align:center; position:relative;">
+          <span style="background:#1ec9a8; color:#fff; padding:8px 16px; border-radius:20px; font-size:1.1rem; margin-right:12px;">💡</span>
+          건의하기
+        </h3>
+        <form style="max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:18px;">
           <input type="text" placeholder="이름" required style="padding:14px 12px; border-radius:8px; border:1.2px solid #e0e0e0; font-size:1.05rem;">
           <input type="email" placeholder="이메일" required style="padding:14px 12px; border-radius:8px; border:1.2px solid #e0e0e0; font-size:1.05rem;">
           <textarea placeholder="건의 내용을 입력해 주세요." required style="padding:14px 12px; border-radius:8px; border:1.2px solid #e0e0e0; font-size:1.05rem; min-height:120px;"></textarea>
           <button type="submit" style="background:#7b6eea; color:#fff; border:none; border-radius:8px; padding:16px 0; font-size:1.08rem; font-weight:bold; cursor:pointer; margin-top:8px;">건의하기 제출</button>
         </form>
       </section>
-      <section class="support-tab-panel" data-tab="call" style="display:none; background:#fff; border-radius:0 0 18px 18px; box-shadow:0 2px 12px rgba(30,201,255,0.08); padding:48px 0 48px 0;">
+      <section class="support-tab-panel" data-tab="call" style="display:none; background:#fff; border-radius:0 0 18px 18px; box-shadow:0 4px 20px rgba(30,201,255,0.12); padding:48px 40px 40px 40px; border-top:3px solid #1e90ff;">
+        <h3 style="color:#2d3a8c; font-size:1.4rem; font-weight:bold; margin-bottom:32px; text-align:center; position:relative;">
+          <span style="background:#1e90ff; color:#fff; padding:8px 16px; border-radius:20px; font-size:1.1rem; margin-right:12px;">📞</span>
+          질문하기
+        </h3>
         <div class="support-card-row">
-          <div class="support-card bg">
-            <div style="font-size:2.8rem; margin-bottom:18px; color:#2d3a8c;">📝</div>
-            <div style="font-size:1.18rem; font-weight:700; color:#2d3a8c; margin-bottom:18px;">1:1 온라인 게시판 문의</div>
-            <div style="font-size:1.05rem; color:#444; margin-bottom:22px;">AI 디지털교과서 관련 문의를 게시판에 남겨주시면 신속하게 답변해 드립니다.</div>
-            <a href="https://ktbook.metahub.co.kr:25750/iscream/" target="_blank" rel="noopener" style="background:linear-gradient(90deg,#7b6eea 0%,#1ec9a8 100%); color:#fff; font-size:1.13rem; font-weight:700; padding:16px 38px; border-radius:12px; border:none; box-shadow:0 2px 8px rgba(123,110,234,0.10); text-decoration:none; display:inline-block;">바로가기</a>
+          <div class="support-card" style="background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%); border: 2px solid #e8ecff; border-radius: 20px; padding: 40px 30px; text-align: center; box-shadow: 0 8px 25px rgba(123, 110, 234, 0.08); transition: all 0.3s ease; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -10px; right: -10px; width: 60px; height: 60px; background: linear-gradient(135deg, #7b6eea, #9c88ff); border-radius: 50%; opacity: 0.1;"></div>
+            <div style="font-size: 3.2rem; margin-bottom: 20px; color: #7b6eea;">📝</div>
+            <div style="font-size: 1.25rem; font-weight: 700; color: #7b6eea; margin-bottom: 20px;">1:1 온라인 게시판 문의</div>
+            <div style="font-size: 1.05rem; color: #555; margin-bottom: 25px; line-height: 1.6;">AI 디지털교과서 관련 문의를 게시판에 남겨주시면<br>신속하게 답변해 드립니다.</div>
+            <a href="https://ktbook.metahub.co.kr:25750/iscream/" target="_blank" rel="noopener" style="background: linear-gradient(135deg, #7b6eea 0%, #9c88ff 100%); color: #fff; font-size: 1.15rem; font-weight: 700; padding: 18px 42px; border-radius: 15px; border: none; box-shadow: 0 4px 15px rgba(123, 110, 234, 0.3); text-decoration: none; display: inline-block; transition: all 0.3s ease; position: relative; overflow: hidden;">
+              <span style="position: relative; z-index: 2;">바로가기</span>
+              <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(135deg, #9c88ff 0%, #7b6eea 100%); transition: left 0.3s ease;"></div>
+            </a>
           </div>
-          <div class="support-card">
-            <div style="font-size:2.8rem; margin-bottom:18px; color:#1ec9a8;">☎️</div>
-            <div style="font-size:1.45rem; color:#1e90ff; font-weight:800; margin-bottom:10px; letter-spacing:1px;">1661-0777</div>
-            <div style="font-size:1.08rem; color:#444; margin-bottom:18px;">AI 디지털교과서에 대한 궁금증을 빠르게 해결해 드립니다.<br>평일 09:00~18:00 (점심 12:00~13:00)</div>
-            <a href="tel:1661-0777" style="background:linear-gradient(90deg,#7b6eea 0%,#1ec9a8 100%); color:#fff; font-size:1.18rem; font-weight:700; padding:18px 48px; border-radius:14px; border:none; box-shadow:0 2px 8px rgba(123,110,234,0.10); text-decoration:none; display:inline-block; margin-top:10px;">빠른 전화상담</a>
+          <div class="support-card" style="background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%); border: 2px solid #d4e9ff; border-radius: 20px; padding: 40px 30px; text-align: center; box-shadow: 0 8px 25px rgba(30, 144, 255, 0.08); transition: all 0.3s ease; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -10px; right: -10px; width: 60px; height: 60px; background: linear-gradient(135deg, #1e90ff, #4da6ff); border-radius: 50%; opacity: 0.1;"></div>
+            <div style="font-size: 3.2rem; margin-bottom: 20px; color: #1e90ff;">☎️</div>
+            <div style="font-size: 1.5rem; color: #1e90ff; font-weight: 800; margin-bottom: 12px; letter-spacing: 1px;">1661-0777</div>
+            <div style="font-size: 1.08rem; color: #555; margin-bottom: 20px; line-height: 1.6;">AI 디지털교과서에 대한 궁금증을<br>빠르게 해결해 드립니다.<br><span style="color: #1e90ff; font-weight: 600;">평일 09:00~18:00 (점심 12:00~13:00)</span></div>
+            <a href="tel:1661-0777" style="background: linear-gradient(135deg, #1e90ff 0%, #4da6ff 100%); color: #fff; font-size: 1.2rem; font-weight: 700; padding: 20px 50px; border-radius: 15px; border: none; box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3); text-decoration: none; display: inline-block; transition: all 0.3s ease; position: relative; overflow: hidden;">
+              <span style="position: relative; z-index: 2;">빠른 전화상담</span>
+              <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(135deg, #4da6ff 0%, #1e90ff 100%); transition: left 0.3s ease;"></div>
+            </a>
           </div>
         </div>
       </section>
@@ -245,9 +290,67 @@
     </div>
   </main>
 
+  <script>
+    // 탭 전환 기능
+    const supportTabs = document.querySelectorAll('.support-tab');
+    const supportPanels = document.querySelectorAll('.support-tab-panel');
+    
+    supportTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        // 모든 탭 비활성화
+        supportTabs.forEach(t => {
+          t.style.background = '#e9ecef';
+          t.style.fontWeight = '600';
+          t.style.borderBottom = '3px solid transparent';
+          // 각 탭별 기본 색상 설정
+          if (t.dataset.tab === 'faq') {
+            t.style.color = '#7b6eea';
+          } else if (t.dataset.tab === 'inquiry') {
+            t.style.color = '#1ec9a8';
+          } else if (t.dataset.tab === 'call') {
+            t.style.color = '#1e90ff';
+          }
+        });
+        
+        // 모든 패널 숨기기
+        supportPanels.forEach(panel => {
+          panel.style.display = 'none';
+        });
+        
+        // 클릭된 탭 활성화 (탭별로 다른 색상 적용)
+        const tabType = this.dataset.tab;
+        let borderColor = '#7b6eea'; // 기본색
+        
+        if (tabType === 'inquiry') {
+          borderColor = '#1ec9a8';
+        } else if (tabType === 'call') {
+          borderColor = '#1e90ff';
+        }
+        
+        this.style.background = '#fff';
+        this.style.fontWeight = '700';
+        this.style.borderBottom = '3px solid ' + borderColor;
+        // 활성 탭의 색상은 더 진하게
+        if (tabType === 'faq') {
+          this.style.color = '#7b6eea';
+        } else if (tabType === 'inquiry') {
+          this.style.color = '#1ec9a8';
+        } else if (tabType === 'call') {
+          this.style.color = '#1e90ff';
+        }
+        
+        // 해당 패널 보이기
+        const targetPanel = document.querySelector('.support-tab-panel[data-tab="' + tabType + '"]');
+        if (targetPanel) {
+          targetPanel.style.display = 'block';
+        }
+      });
+    });
+  </script>
+
   <!-- 푸터 -->
   <footer style="background: #e9ecef; padding: 40px 0 20px 0; margin-top: 60px; border-top: 1px solid #dee2e6;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
       <!-- 회사 정보 -->
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; flex-wrap: wrap;">
         <div style="flex: 1; min-width: 300px;">
@@ -313,6 +416,21 @@
       color: #1a73e8 !important;
     }
     
+    /* 질문하기 카드 호버 효과 */
+    .support-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .support-card a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    .support-card a:hover div {
+      left: 0 !important;
+    }
+    
     @media (max-width: 768px) {
       footer {
         padding: 30px 0 15px 0;
@@ -332,18 +450,10 @@
       }
     }
   </style>
-  <script>
-    // 탭 전환 스크립트
-    const supportTabs = document.querySelectorAll('.support-tab');
-    const supportPanels = document.querySelectorAll('.support-tab-panel');
-    supportTabs.forEach(tab => {
-      tab.addEventListener('click', function() {
-        supportTabs.forEach(t => t.classList.remove('active'));
-        supportPanels.forEach(panel => panel.style.display = 'none');
-        this.classList.add('active');
-        document.querySelector('.support-tab-panel[data-tab="' + this.dataset.tab + '"]').style.display = 'block';
-      });
-    });
-  </script>
+
+  <button class="floating-apply-btn" onclick="location.href='teacher-training.html'">
+    맞춤 교원 연수 신청하세요!
+  </button>
+
 </body>
 </html> 
