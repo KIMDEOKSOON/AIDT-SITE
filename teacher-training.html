@@ -270,6 +270,211 @@
       color: #888;
       font-size: 1.05rem;
     }
+    .calendar-section {
+      margin: 32px 0 32px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .calendar-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 20px rgba(123,110,234,0.10);
+      padding: 44px 0 36px 0;
+      min-width: 0;
+      max-width: none;
+      width: 100%;
+      text-align: center;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .calendar-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .calendar-nav-btn {
+      background: linear-gradient(90deg, #7b6eea 0%, #1ec9a8 100%);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(123,110,234,0.10);
+      transition: background 0.18s, color 0.18s, transform 0.18s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .calendar-nav-btn:hover {
+      background: #ffe14f;
+      color: #7b6eea;
+      transform: scale(1.08);
+    }
+    .calendar-nav-label {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #222;
+      min-width: 120px;
+      text-align: center;
+    }
+    .edu-calendar-table {
+      border-collapse: separate;
+      border-spacing: 12px 14px;
+      width: 90%;
+      max-width: 700px;
+      background: #f8f9fa;
+      border-radius: 18px;
+      box-shadow: 0 2px 8px rgba(123,110,234,0.06);
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    .edu-calendar-table th {
+      background: linear-gradient(90deg, #7b6eea 0%, #1ec9a8 100%);
+      color: #fff;
+      font-weight: 700;
+      padding: 16px 0;
+      font-size: 1.15rem;
+      border-radius: 10px;
+    }
+    .edu-calendar-table td {
+      text-align: center;
+      vertical-align: top;
+      padding: 0;
+      font-size: 1.25rem;
+      color: #333;
+      border-radius: 14px;
+      width: 80px;
+      height: 80px;
+      background: #fff;
+      position: relative;
+      transition: background 0.2s, color 0.2s;
+      font-weight: 500;
+    }
+    .edu-calendar-table td .edu-label {
+      display: block;
+      font-size: 1.05rem;
+      color: #1ec9a8;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+    .edu-calendar-table td.today {
+      background: #ffe14f;
+      color: #7b6eea;
+      font-weight: 700;
+    }
+    .edu-calendar-table td.edu-date {
+      background: linear-gradient(90deg, #7b6eea 0%, #1ec9a8 100%);
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(123,110,234,0.10);
+      position: relative;
+    }
+    .edu-calendar-table td.edu-date .edu-label {
+      color: #ffe14f;
+    }
+    .edu-calendar-table td.edu-date::after {
+      content: '✔';
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 1.15rem;
+      color: #ffe14f;
+    }
+    .calendar-desc {
+      font-size: 1.08rem;
+      color: #888;
+      margin-top: 18px;
+      line-height: 1.7;
+      text-align: center;
+    }
+    @media (max-width: 700px) {
+      .calendar-card { padding: 18px 0 12px 0; }
+      .calendar-title { font-size: 1.08rem; }
+      .calendar-desc { font-size: 0.98rem; }
+      .edu-calendar-table th, .edu-calendar-table td { font-size: 0.98rem; padding: 8px 0; }
+      .edu-calendar-table td { width: 48px; height: 48px; }
+    }
+    .calendar-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 28px;
+      letter-spacing: -1px;
+      text-align: center;
+    }
+    footer a:hover {
+      color: #1a73e8 !important;
+    }
+    
+    @media (max-width: 768px) {
+      footer {
+        padding: 30px 0 15px 0;
+      }
+      
+      footer > div > div {
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      footer > div > div > div:first-child {
+        min-width: auto;
+      }
+      
+      footer > div > div > div:last-child {
+        gap: 30px;
+      }
+    }
+
+    /* 쌤튜브 플로팅 메뉴 스타일 */
+    .floating-ssemtube-btn {
+      position: fixed;
+      right: 32px;
+      bottom: 32px;
+      z-index: 500;
+      background: #2d2d2d;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 28px 32px 24px 32px;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(45,45,45,0.28);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      outline: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      max-width: 340px;
+      text-align: center;
+      line-height: 1.4;
+    }
+    
+    .floating-ssemtube-btn:hover {
+      box-shadow: 0 12px 40px rgba(255, 167, 38, 0.35);
+      transform: translateY(-3px) scale(1.05);
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    @media (max-width: 700px) {
+      .floating-ssemtube-btn { 
+        right: 16px; 
+        bottom: 16px; 
+        padding: 18px 12px 16px 12px; 
+        font-size: 1rem;
+        max-width: 240px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -405,6 +610,20 @@
           </p>
         </div>
 
+        <!-- 교육 일정 달력 안내 -->
+        <div class="calendar-section">
+          <div class="calendar-card">
+            <div class="calendar-title">교육 일정 안내</div>
+            <div class="calendar-nav">
+              <button class="calendar-nav-btn" id="calendar-prev">◀</button>
+              <span class="calendar-nav-label" id="calendar-label"></span>
+              <button class="calendar-nav-btn" id="calendar-next">▶</button>
+            </div>
+            <div id="edu-calendar"></div>
+            <div class="calendar-desc">교육 일정은 내부 절차 후 확정되며, 확정된 날짜에만 색상으로 표시됩니다.<br>확정 일정은 개별 안내와 함께 이곳에서 확인하실 수 있습니다.</div>
+          </div>
+        </div>
+
         <button type="submit" class="submit-btn">신청하기</button>
       </form>
     </div>
@@ -473,30 +692,68 @@
     </div>
   </footer>
 
-  <style>
-    footer a:hover {
-      color: #1a73e8 !important;
+  <!-- 쌤튜브 플로팅 메뉴 -->
+  <div class="floating-ssemtube-btn">
+    <div style="font-size:2.5rem;line-height:1;margin-bottom:2px;">🎬</div>
+    <div style="font-size:1.1rem;font-weight:700;color:#fff;text-align:center;line-height:1.3;letter-spacing:-1px;">교육용 영상 콘텐츠 플랫폼,</div>
+    <a href="https://www.ssemtube.com/front/home.do" target="_blank" style="font-size:1.7rem;font-weight:900;color:#ffa726;text-decoration:none;line-height:1.2;">쌤튜브</a>
+  </div>
+
+  <script>
+  // 교육 일정 달력 렌더링 (연/월 네비, 교육명 표시, 일정 배열)
+  const eduDatesAll = [
+    {date:'2024-07-15',label:'수학'},
+    {date:'2024-08-02',label:'영어'},
+    {date:'2025-03-10',label:'수학'},
+    {date:'2025-04-05',label:'영어'}
+  ];
+  let calYear = 2024;
+  let calMonth = 7;
+  function renderEduCalendar(year, month, eduDates) {
+    const today = new Date();
+    const firstDay = new Date(year, month-1, 1);
+    const lastDay = new Date(year, month, 0);
+    let html = '<table class="edu-calendar-table">';
+    html += '<tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr><tr>';
+    for(let i=0; i<firstDay.getDay(); i++) html += '<td></td>';
+    for(let d=1; d<=lastDay.getDate(); d++) {
+      const dateStr = `${year}-${String(month).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const eduObj = eduDates.find(e=>e.date===dateStr);
+      let cls = '';
+      let label = '';
+      if(eduObj) { cls = 'edu-date'; label = `<span class=\"edu-label\">${eduObj.label}</span>`; }
+      if(year===today.getFullYear() && month===today.getMonth()+1 && d===today.getDate()) cls += ' today';
+      html += `<td class=\"${cls}\">${d}${label}</td>`;
+      if((firstDay.getDay()+d)%7===0) html += '</tr><tr>';
     }
-    
-    @media (max-width: 768px) {
-      footer {
-        padding: 30px 0 15px 0;
-      }
-      
-      footer > div > div {
-        flex-direction: column;
-        gap: 30px;
-      }
-      
-      footer > div > div > div:first-child {
-        min-width: auto;
-      }
-      
-      footer > div > div > div:last-child {
-        gap: 30px;
-      }
-    }
-  </style>
+    html += '</tr></table>';
+    document.getElementById('edu-calendar').innerHTML = html;
+    document.getElementById('calendar-label').textContent = `${year}년 ${month}월`;
+  }
+  function updateCalendar(y, m) {
+    calYear = y; calMonth = m;
+    const filtered = eduDatesAll.filter(e => {
+      const [ey, em] = e.date.split('-');
+      return Number(ey) === y && Number(em) === m;
+    });
+    renderEduCalendar(y, m, filtered);
+  }
+  document.getElementById('calendar-prev').onclick = function(e) {
+    e.preventDefault();
+    this.blur();
+    let y = calYear, m = calMonth-1;
+    if(m < 1) { y--; m = 12; }
+    updateCalendar(y, m);
+  };
+  document.getElementById('calendar-next').onclick = function(e) {
+    e.preventDefault();
+    this.blur();
+    let y = calYear, m = calMonth+1;
+    if(m > 12) { y++; m = 1; }
+    updateCalendar(y, m);
+  };
+  updateCalendar(calYear, calMonth);
+  </script>
 
 </body>
 </html> 

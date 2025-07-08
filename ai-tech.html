@@ -4,18 +4,203 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI 기술 | 아이스크림 AIDT</title>
+  <meta name="description" content="아이스크림 AIDT의 혁신적인 AI 기술을 소개합니다. 대형언어모델, 이미지 생성, 사운드 생성 등 다양한 AI 기술이 교육에 어떻게 적용되는지 확인해보세요.">
+  <meta name="keywords" content="AI 기술, 디지털 교과서, 아이스크림 AIDT, 대형언어모델, 이미지 생성, 사운드 생성">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; font-family: 'Noto Sans KR', sans-serif; background: #f8f9fa; }
+    /* 성능 최적화를 위한 CSS 변수 */
+    :root {
+      --primary-color: #7b6eea;
+      --secondary-color: #1ec9a8;
+      --accent-color: #ffe14f;
+      --text-primary: #2d3a8c;
+      --text-secondary: #444;
+      --text-light: #666;
+      --bg-primary: #f8f9fa;
+      --bg-secondary: #eaf4ff;
+      --shadow-light: 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-medium: 0 8px 32px rgba(123,110,234,0.12);
+      --shadow-heavy: 0 16px 48px rgba(123,110,234,0.25);
+      --border-radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 기본 스타일 최적화 */
+    * {
+      box-sizing: border-box;
+    }
+
+    body { 
+      margin: 0; 
+      font-family: 'Noto Sans KR', sans-serif; 
+      background: var(--bg-primary);
+      line-height: 1.6;
+      color: var(--text-secondary);
+      overflow-x: hidden;
+    }
+
+    /* 이미지 최적화 */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 스크롤바 스타일링 */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary-color);
+    }
+
+    /* 로딩 스크린 */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease-out;
+    }
+
+    .loading-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loading-content {
+      text-align: center;
+      color: white;
+    }
+
+    .loading-logo {
+      margin-bottom: 30px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .loading-logo svg {
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    .loading-text {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 0 0 15px 0;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .loading-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .loading-dots span {
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      animation: dots 1.4s ease-in-out infinite both;
+    }
+
+    .loading-dots span:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    .loading-dots span:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    .loading-dots span:nth-child(3) {
+      animation-delay: 0s;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+    }
+
+    @keyframes dots {
+      0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* 스크롤 진행률 */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(123, 110, 234, 0.1);
+      z-index: 1000;
+    }
+
+    .scroll-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      width: 0%;
+      transition: width 0.1s ease;
+    }
+    /* 네비게이션 개선 */
     .gnb {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 64px;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      height: 70px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-light);
       position: sticky;
       top: 0;
       z-index: 100;
+      transition: var(--transition);
+      border-bottom: 1px solid rgba(123, 110, 234, 0.1);
+    }
+
+    .gnb.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
     .gnb-left {
       font-size: 1.5rem;
@@ -112,6 +297,11 @@
       width: max-content;
       margin: 40px 0 0 0;
       padding: 0 25px;
+      will-change: transform;
+    }
+
+    .rolling-list.paused {
+      animation-play-state: paused;
     }
     .rolling-list:hover {
       animation-play-state: paused;
@@ -392,9 +582,214 @@
         padding: 30px 24px !important;
       }
     }
-   </style>
+
+    /* 스크롤 기반 애니메이션 */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .slide-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .slide-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .scale-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* 접근성 개선 */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* 포커스 스타일 개선 */
+    button:focus,
+    a:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+
+    /* 다크모드 지원 */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-primary: #1a1a1a;
+        --text-secondary: #e0e0e0;
+        --text-light: #b0b0b0;
+      }
+    }
+
+    /* AI 기술 탭 카드형 디자인 */
+    .ai-tab-menu {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-end;
+      margin-bottom: 32px;
+    }
+    .ai-tab-card {
+      min-width: 160px;
+      max-width: 200px;
+      flex: 1 1 160px;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 4px 24px rgba(30,41,80,0.10);
+      padding: 32px 18px 22px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: box-shadow 0.2s, border 0.2s, transform 0.18s;
+      position: relative;
+      z-index: 1;
+    }
+    .ai-tab-card .ai-tab-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(30,41,80,0.10);
+      font-size: 2.2rem;
+    }
+    .ai-tab-card[data-tab="llm"]   .ai-tab-icon { background: linear-gradient(135deg,#7b6eea 0%,#1ec9ff 100%); }
+    .ai-tab-card[data-tab="image"] .ai-tab-icon { background: linear-gradient(135deg,#1ec9a8 0%,#a8edea 100%); }
+    .ai-tab-card[data-tab="sound"] .ai-tab-icon { background: linear-gradient(135deg,#ffb347 0%,#ff6b6b 100%); }
+    .ai-tab-card[data-tab="vision"] .ai-tab-icon { background: linear-gradient(135deg,#4ecdc4 0%,#44a08d 100%); }
+    .ai-tab-card[data-tab="video"]  .ai-tab-icon { background: linear-gradient(135deg,#f797fd 0%,#7b6eea 100%); }
+
+    .ai-tab-card .ai-tab-label {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #2d3a8c;
+      text-align: center;
+      margin-bottom: 0;
+      letter-spacing: -0.5px;
+    }
+    .ai-tab-card.active {
+      border: 4px solid #7b6eea;
+      box-shadow: 0 12px 40px rgba(123,110,234,0.25), 0 0 0 8px rgba(123,110,234,0.1);
+      transform: scale(1.08);
+      z-index: 2;
+      position: relative;
+    }
+    .ai-tab-card.active::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 4px;
+      background: linear-gradient(90deg, #7b6eea 0%, #1ec9a8 100%);
+      border-radius: 2px;
+    }
+    .ai-tab-card.active .ai-tab-icon {
+      box-shadow: 0 4px 20px rgba(123,110,234,0.3);
+    }
+    .ai-tab-card.active .ai-tab-label {
+      color: #7b6eea;
+      font-weight: 800;
+    }
+    .ai-tab-card:hover {
+      box-shadow: 0 12px 36px rgba(30,41,80,0.16);
+      transform: translateY(-4px) scale(1.04);
+    }
+    @media (max-width: 900px) {
+      .ai-tab-menu { gap: 16px; }
+      .ai-tab-card { min-width: 120px; max-width: 160px; padding: 18px 8px 14px 8px; }
+      .ai-tab-card .ai-tab-icon { width: 44px; height: 44px; font-size: 1.3rem; margin-bottom: 10px; }
+      .ai-tab-card .ai-tab-label { font-size: 0.98rem; }
+    }
+
+    .fade-in-animate {
+      animation: fadeInUp 0.5s cubic-bezier(.4,1.4,.6,1);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
+  <!-- 로딩 스크린 -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <div class="loading-logo">
+        <!-- AI 기술을 상징하는 SVG 아이콘 -->
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="35" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/>
+          <circle cx="40" cy="40" r="25" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none"/>
+          <circle cx="40" cy="40" r="15" stroke="white" stroke-width="3" fill="none"/>
+          <!-- AI 두뇌 아이콘 -->
+          <path d="M30 35 Q40 25 50 35 Q55 40 50 45 Q40 55 30 45 Q25 40 30 35" stroke="white" stroke-width="2" fill="none"/>
+          <circle cx="35" cy="38" r="2" fill="white"/>
+          <circle cx="45" cy="38" r="2" fill="white"/>
+          <path d="M35 42 Q40 45 45 42" stroke="white" stroke-width="1.5" fill="none"/>
+          <!-- 연결선 -->
+          <path d="M20 30 L30 35" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none"/>
+          <path d="M50 35 L60 30" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none"/>
+          <path d="M20 50 L30 45" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none"/>
+          <path d="M50 45 L60 50" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <div class="loading-spinner"></div>
+      <p class="loading-text">AI 기술을 불러오는 중...</p>
+      <div class="loading-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 스크롤 진행률 표시 -->
+  <div class="scroll-progress">
+    <div class="scroll-progress-bar"></div>
+  </div>
+
   <nav class="gnb">
     <a class="gnb-left" href="index.html">아이스크림 AIDT</a>
     <div class="gnb-center">
@@ -600,35 +995,43 @@
   <!-- AI 아이콘 탭 섹션 -->
   <section class="ai-icons-section" style="background:#fff; padding:0 0 60px 0;">
     <div style="max-width:1400px; margin:0 auto; padding:0 20px;">
-      <h2 style="font-size:2.2rem; color:#2d3a8c; font-weight:bold; margin-bottom:32px; text-align:center;">아이스크림 AI 
-기술
-      </h2>
-      <div id="ai-tab-menu" style="display:flex; gap:38px; flex-wrap:wrap; justify-content:center; align-items:flex-end; margin-bottom:32px;">
-        <button class="ai-tab active" data-tab="llm" style="background:none; border:none; cursor:pointer; outline:none; display:flex; flex-direction:column; align-items:center; min-width:110px;">
-          <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image1.png" alt="대형언어모델" style="height:54px; margin-bottom:10px;">
-          <span style="font-size:1.08rem; color:#222; font-weight:500;">대형언어모델(LLM)</span>
-        </button>
-        <button class="ai-tab" data-tab="image" style="background:none; border:none; cursor:pointer; outline:none; display:flex; flex-direction:column; align-items:center; min-width:110px;">
-          <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image2.png" alt="이미지 생성" style="height:54px; margin-bottom:10px;">
-          <span style="font-size:1.08rem; color:#222; font-weight:500;">이미지 생성</span>
-        </button>
-        <button class="ai-tab" data-tab="sound" style="background:none; border:none; cursor:pointer; outline:none; display:flex; flex-direction:column; align-items:center; min-width:110px;">
-          <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image3.png" alt="사운드 생성" style="height:54px; margin-bottom:10px;">
-          <span style="font-size:1.08rem; color:#222; font-weight:500;">사운드 생성</span>
-        </button>
-        <button class="ai-tab" data-tab="vision" style="background:none; border:none; cursor:pointer; outline:none; display:flex; flex-direction:column; align-items:center; min-width:110px;">
-          <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image4.png" alt="이미지/동영상 인식" style="height:54px; margin-bottom:10px;">
-          <span style="font-size:1.08rem; color:#222; font-weight:500;">이미지(동영상) 인식</span>
-        </button>
-        <button class="ai-tab" data-tab="video" style="background:none; border:none; cursor:pointer; outline:none; display:flex; flex-direction:column; align-items:center; min-width:110px;">
-          <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image5.png" alt="동영상 생성" style="height:54px; margin-bottom:10px;">
-          <span style="font-size:1.08rem; color:#222; font-weight:500;">동영상 생성</span>
-        </button>
+      <h2 class="fade-in" style="font-size:2.2rem; color:#2d3a8c; font-weight:bold; margin-bottom:32px; text-align:center;">아이스크림 AI 기술</h2>
+      <div class="ai-tab-menu">
+        <div class="ai-tab-card active" data-tab="llm" tabindex="0">
+          <div class="ai-tab-icon">
+            <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image1.png" alt="대형언어모델" style="width:38px; height:38px;">
+          </div>
+          <div class="ai-tab-label">대형언어모델(LLM)</div>
+        </div>
+        <div class="ai-tab-card" data-tab="image" tabindex="0">
+          <div class="ai-tab-icon">
+            <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image2.png" alt="이미지 생성" style="width:38px; height:38px;">
+          </div>
+          <div class="ai-tab-label">이미지 생성</div>
+        </div>
+        <div class="ai-tab-card" data-tab="sound" tabindex="0">
+          <div class="ai-tab-icon">
+            <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image3.png" alt="사운드 생성" style="width:38px; height:38px;">
+          </div>
+          <div class="ai-tab-label">사운드 생성</div>
+        </div>
+        <div class="ai-tab-card" data-tab="vision" tabindex="0">
+          <div class="ai-tab-icon">
+            <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image4.png" alt="이미지/동영상 인식" style="width:38px; height:38px;">
+          </div>
+          <div class="ai-tab-label">이미지(동영상) 인식</div>
+        </div>
+        <div class="ai-tab-card" data-tab="video" tabindex="0">
+          <div class="ai-tab-icon">
+            <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image5.png" alt="동영상 생성" style="width:38px; height:38px;">
+          </div>
+          <div class="ai-tab-label">동영상 생성</div>
+        </div>
       </div>
-      <div id="ai-tab-content" style="max-width:1000px; margin:0 auto;">
+      <div id="ai-tab-content" style="max-width:1200px; margin:0 auto;">
         <!-- 대형언어모델(LLM) -->
-        <div class="ai-tab-panel" data-tab="llm" style="display:block;">
-          <h3><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image1.png" alt="대형언어모델" style="width:28px; height:28px;"></span>대형언어모델(LLM)</h3>
+        <div class="ai-tab-panel fade-in" data-tab="llm" style="display:block;">
+          <h3 style="color: #7b6eea;"><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image1.png" alt="대형언어모델" style="width:28px; height:28px;"></span>대형언어모델(LLM)</h3>
           <p style="color:#444; font-size:1.05rem; line-height:1.7; margin-bottom:18px;">아이스크림S, 클래스툴 등 다양한 서비스에 적용된 대형언어모델(LLM)은 자연어 처리 기반의 생성형 AI로, AI 평어 생성, 문제풀이 해설, 생활기록부 문장 합성 등 다양한 교육 현장에 활용되고 있습니다. 앞으로는 문서 기반 검색, 챗봇, 다국어 번역 등 전체 서비스로 확대 적용될 예정입니다.</p>
           <ul style="color:#555; font-size:0.98rem; line-height:1.7; padding-left:18px;">
             <li>AI 평어 생성, 문제풀이 해설, 생활기록부 문장 합성</li>
@@ -636,8 +1039,8 @@
           </ul>
         </div>
         <!-- 이미지 생성 -->
-        <div class="ai-tab-panel" data-tab="image" style="display:none;">
-          <h3><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image2.png" alt="이미지 생성" style="width:28px; height:28px;"></span>이미지 생성</h3>
+        <div class="ai-tab-panel fade-in" data-tab="image" style="display:none;">
+          <h3 style="color: #1ec9a8;"><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image2.png" alt="이미지 생성" style="width:28px; height:28px;"></span>이미지 생성</h3>
           <p style="color:#444; font-size:1.05rem; line-height:1.7; margin-bottom:18px;">AI 이미지 생성 기술은 에듀뱅크, AI 클립아트 등에서 활용되며, 수업용 콘텐츠, 교과서 개발, 컬러링북, 협동화, 이미지 편집 등 다양한 교육 콘텐츠 제작에 적용되고 있습니다.</p>
           <ul style="color:#555; font-size:0.98rem; line-height:1.7; padding-left:18px;">
             <li>AI 이미지 생성, AI 클립아트</li>
@@ -645,8 +1048,8 @@
           </ul>
         </div>
         <!-- 사운드 생성 -->
-        <div class="ai-tab-panel" data-tab="sound" style="display:none;">
-          <h3><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image3.png" alt="사운드 생성" style="width:28px; height:28px;"></span>사운드 생성</h3>
+        <div class="ai-tab-panel fade-in" data-tab="sound" style="display:none;">
+          <h3 style="color: #ffb347;"><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image3.png" alt="사운드 생성" style="width:28px; height:28px;"></span>사운드 생성</h3>
           <p style="color:#444; font-size:1.05rem; line-height:1.7; margin-bottom:18px;">사운드 생성 AI는 아이스크림콜, 클래스툴 등에서 녹음(STT), 콘텐츠 더빙, 자동 자막 생성, 자동 회의록, 교사 목소리 변환, 영어 발음 교정 등 다양한 음성 기반 서비스에 적용되고 있습니다.</p>
           <ul style="color:#555; font-size:0.98rem; line-height:1.7; padding-left:18px;">
             <li>녹음(STT), 콘텐츠 더빙, 자동 자막/회의록 생성</li>
@@ -654,8 +1057,8 @@
           </ul>
         </div>
         <!-- 이미지(동영상) 인식 -->
-        <div class="ai-tab-panel" data-tab="vision" style="display:none;">
-          <h3><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image4.png" alt="이미지/동영상 인식" style="width:28px; height:28px;"></span>이미지(동영상) 인식</h3>
+        <div class="ai-tab-panel fade-in" data-tab="vision" style="display:none;">
+          <h3 style="color: #4ecdc4;"><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image4.png" alt="이미지/동영상 인식" style="width:28px; height:28px;"></span>이미지(동영상) 인식</h3>
           <p style="color:#444; font-size:1.05rem; line-height:1.7; margin-bottom:18px;">이미지 및 동영상 인식 AI는 AI Box, 받아쓰기 인식, 예쁜 글씨 쓰기, 학습 집중도 분석(얼굴/눈동자 인식), 감정 분석, 이미지 설명글 등 다양한 교과 활동과 연계되어 활용됩니다.</p>
           <ul style="color:#555; font-size:0.98rem; line-height:1.7; padding-left:18px;">
             <li>AI Box, 받아쓰기 인식, 예쁜 글씨 쓰기</li>
@@ -663,8 +1066,8 @@
           </ul>
         </div>
         <!-- 동영상 생성 -->
-        <div class="ai-tab-panel" data-tab="video" style="display:none;">
-          <h3><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image5.png" alt="동영상 생성" style="width:28px; height:28px;"></span>동영상 생성</h3>
+        <div class="ai-tab-panel fade-in" data-tab="video" style="display:none;">
+          <h3 style="color: #f797fd;"><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image5.png" alt="동영상 생성" style="width:28px; height:28px;"></span>동영상 생성</h3>
           <p style="color:#444; font-size:1.05rem; line-height:1.7; margin-bottom:18px;">동영상 생성 AI는 시나리오, 이미지, 음성, 동영상 생성 등 다양한 모델 연구가 진행 중이며, 교육 관련 5분 이내 애니메이션, 실사/3D 동영상 등 다양한 교육 콘텐츠 제작에 적용될 예정입니다.</p>
           <ul style="color:#555; font-size:0.98rem; line-height:1.7; padding-left:18px;">
             <li>시나리오, 이미지, 음성, 동영상 생성</li>
@@ -831,29 +1234,7 @@
         <div class="rolling-detail-item" data-detail-id="ai5" style="display:none; text-align:center; color:#888; font-size:1.15rem;">준비중입니다.</div>
         <div class="rolling-detail-item" data-detail-id="ai6" style="display:none; text-align:center; color:#888; font-size:1.15rem;">준비중입니다.</div>
         <div class="rolling-detail-item" data-detail-id="ai7" style="display:none; text-align:center; color:#888; font-size:1.15rem; position:relative; min-height:420px;">
-          <button id="ai7-prev-btn" style="display:none; position:absolute; left:32px; top:50%; transform:translateY(-50%); background:#7b6eea; color:#fff; border:none; border-radius:50%; width:48px; height:48px; font-size:2rem; cursor:pointer; box-shadow:0 2px 8px rgba(123,110,234,0.12); display:flex; align-items:center; justify-content:center; z-index:10; pointer-events:auto;">◀</button>
-          <button id="ai7-next-btn" style="position:absolute; right:32px; top:50%; transform:translateY(-50%); background:#7b6eea; color:#fff; border:none; border-radius:50%; width:48px; height:48px; font-size:2rem; cursor:pointer; box-shadow:0 2px 8px rgba(123,110,234,0.12); display:flex; align-items:center; justify-content:center; z-index:10; pointer-events:auto;">▶</button>
-          <div id="ai7-page1" style="display:block;">
-            <h2 style="color:#7b6eea; font-size:1.6rem; font-weight:bold; margin-bottom:18px;">AI 추천 시스템</h2>
-            <img src="recommend.PNG" alt="AI 추천 시스템 예시 이미지" style="max-width:100%; border-radius:16px; margin-bottom:18px; margin-top:10px; box-shadow:0 2px 12px rgba(45,58,140,0.10); display:block; margin-left:auto; margin-right:auto;">
-          </div>
-          <div id="ai7-page2" style="display:none;">
-            <div style="color:#444; font-size:1.08rem; line-height:1.7; margin-top:10px; text-align:left; max-width:700px; margin-left:auto; margin-right:auto;">
-              <b>AI 추천 시스템이란?</b><br>
-              학습자의 이력과 문항 유사성, 협업 필터링 등 다양한 AI 기술을 활용하여<br>
-              학생 개개인에게 맞춤형 문항과 자료를 추천해주는 시스템입니다.<br><br>
-              <b>주요 기능</b><br>
-              - 학습 이력 기반 맞춤형 문항 추천<br>
-              - 유사 문항/자료 자동 탐색 및 제공<br>
-              - 협업 필터링을 통한 학습 패턴 분석<br>
-              - 교사/학생별 추천 결과 리포트 제공<br><br>
-              <b>활용 예시</b><br>
-              1. 학생이 틀린 문제와 유사한 문항을 자동으로 추천<br>
-              2. 학습 패턴을 분석해 취약 개념을 진단하고, 보충 자료를 제안<br>
-              3. 교사는 전체 학급의 추천 결과를 한눈에 확인 가능<br><br>
-              <span style="color:#7b6eea; font-weight:bold;">AI 추천 시스템으로 학생별 맞춤형 학습 경험을 제공합니다!</span>
-            </div>
-          </div>
+          <img src="recommend.PNG" alt="AI 추천 시스템 예시 이미지" style="max-width:100%; border-radius:16px; margin-bottom:18px; margin-top:10px; box-shadow:0 2px 12px rgba(45,58,140,0.10); display:block; margin-left:auto; margin-right:auto;">
         </div>
         <div class="rolling-detail-item" data-detail-id="ai8" style="display:none; text-align:center; color:#888; font-size:1.15rem;">준비중입니다.</div>
         <div class="rolling-detail-item" data-detail-id="ai9" style="display:none; text-align:center; color:#888; font-size:1.15rem;">준비중입니다.</div>
@@ -864,62 +1245,246 @@
   </div>
 
   <script>
-    // AI 탭 전환 스크립트
-    const aiTabs = document.querySelectorAll('.ai-tab');
+    // 페이지 로딩 최적화
+    document.addEventListener('DOMContentLoaded', function() {
+      // 로딩 스크린 숨기기
+      setTimeout(() => {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+          loadingScreen.classList.add('hidden');
+          setTimeout(() => {
+            loadingScreen.style.display = 'none';
+          }, 500);
+        }
+      }, 1000);
+
+      // 이미지 lazy loading
+      const images = document.querySelectorAll('img[src]');
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.style.opacity = '1';
+            observer.unobserve(img);
+          }
+        });
+      });
+
+      images.forEach(img => {
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.3s ease';
+        imageObserver.observe(img);
+      });
+    });
+
+    // 스크롤 진행률 업데이트 (최적화된 버전으로 대체됨)
+
+    // 스크롤 기반 애니메이션
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const animationObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // 애니메이션 요소들 관찰 시작
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
+      animatedElements.forEach(el => {
+        animationObserver.observe(el);
+      });
+    });
+
+    // AI 탭 전환 스크립트 (개선)
+    const aiTabCards = document.querySelectorAll('.ai-tab-card');
     const aiPanels = document.querySelectorAll('.ai-tab-panel');
-    aiTabs.forEach(tab => {
+    aiTabCards.forEach(tab => {
       tab.addEventListener('click', function() {
-        aiTabs.forEach(t => t.classList.remove('active'));
+        aiTabCards.forEach(t => t.classList.remove('active'));
         aiPanels.forEach(panel => panel.style.display = 'none');
         this.classList.add('active');
-        document.querySelector('.ai-tab-panel[data-tab="' + this.dataset.tab + '"]').style.display = 'block';
+        const targetPanel = document.querySelector('.ai-tab-panel[data-tab="' + this.dataset.tab + '"]');
+        if (targetPanel) {
+          targetPanel.style.display = 'block';
+          // 애니메이션 재생을 위해 클래스 강제 재부여
+          targetPanel.classList.remove('fade-in-animate');
+          void targetPanel.offsetWidth;
+          targetPanel.classList.add('fade-in-animate');
+        }
+      });
+      tab.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          this.click();
+        }
       });
     });
     
-    // 롤링 카드 상세 오버레이(모달) 동작
+    // 롤링 카드 상세 오버레이(모달) 동작 (개선)
     document.querySelectorAll('.glass-btn').forEach(btn => {
       btn.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
+        
         const id = this.getAttribute('data-detail-id');
+        const overlay = document.getElementById('rolling-detail-overlay');
+        const modal = document.getElementById('rolling-detail-modal');
+        
         // 모든 상세 숨기기
-        document.querySelectorAll('.rolling-detail-item').forEach(item => item.style.display = 'none');
+        document.querySelectorAll('.rolling-detail-item').forEach(item => {
+          item.style.display = 'none';
+          item.classList.remove('active');
+        });
+        
         // 해당 상세만 보이기
         const detail = document.querySelector('.rolling-detail-item[data-detail-id="' + id + '"]');
-        if(detail) detail.style.display = 'block';
+        if(detail) {
+          detail.style.display = 'block';
+          // 애니메이션을 위한 지연
+          setTimeout(() => {
+            detail.classList.add('active');
+          }, 50);
+        }
+        
         // 오버레이/모달 열기
-        document.getElementById('rolling-detail-overlay').style.display = 'flex';
-        setTimeout(()=>{
-          document.getElementById('rolling-detail-modal').style.transform='scale(1)';
-          document.getElementById('rolling-detail-modal').style.opacity='1';
-        }, 10);
+        overlay.style.display = 'flex';
         document.body.style.overflow = 'hidden';
+        
+        // 모달 애니메이션
+        requestAnimationFrame(() => {
+          modal.style.transform = 'scale(1)';
+          modal.style.opacity = '1';
+        });
       });
     });
-    document.getElementById('rolling-detail-close').addEventListener('click', function() {
-      document.getElementById('rolling-detail-modal').style.transform = 'scale(0.85)';
-      document.getElementById('rolling-detail-modal').style.opacity = '0';
-      setTimeout(()=>{
-        document.getElementById('rolling-detail-overlay').style.display = 'none';
+
+    // 롤링 카드 호버 시 애니메이션 일시정지
+    const rollingList = document.querySelector('.rolling-list');
+    if (rollingList) {
+      rollingList.addEventListener('mouseenter', function() {
+        this.classList.add('paused');
+      });
+      
+      rollingList.addEventListener('mouseleave', function() {
+        this.classList.remove('paused');
+      });
+    }
+    // 모달 닫기 기능 (개선)
+    function closeModal() {
+      const modal = document.getElementById('rolling-detail-modal');
+      const overlay = document.getElementById('rolling-detail-overlay');
+      
+      modal.style.transform = 'scale(0.85)';
+      modal.style.opacity = '0';
+      
+      setTimeout(() => {
+        overlay.style.display = 'none';
         document.body.style.overflow = '';
+        
+        // 상세 내용 초기화
+        document.querySelectorAll('.rolling-detail-item').forEach(item => {
+          item.style.display = 'none';
+          item.classList.remove('active');
+        });
+        
+        // AI 추천 시스템 페이지 상태 초기화
+        const ai7Page1 = document.getElementById('ai7-page1');
+        const ai7Page2 = document.getElementById('ai7-page2');
+        const ai7PrevBtn = document.getElementById('ai7-prev-btn');
+        const ai7NextBtn = document.getElementById('ai7-next-btn');
+        
+        if (ai7Page1 && ai7Page2 && ai7PrevBtn && ai7NextBtn) {
+          ai7Page1.style.display = 'block';
+          ai7Page2.style.display = 'none';
+          ai7PrevBtn.style.display = 'none';
+          ai7NextBtn.style.display = 'flex';
+        }
       }, 350);
-    });
+    }
+
+    document.getElementById('rolling-detail-close').addEventListener('click', closeModal);
+    
     document.getElementById('rolling-detail-overlay').addEventListener('click', function(e) {
       if(e.target === this) {
-        document.getElementById('rolling-detail-modal').style.transform = 'scale(0.85)';
-        document.getElementById('rolling-detail-modal').style.opacity = '0';
-        setTimeout(()=>{
-          document.getElementById('rolling-detail-overlay').style.display = 'none';
-          document.body.style.overflow = '';
-        }, 350);
+        closeModal();
       }
     });
-    // 영어관/수학관 체험하기 함수는 기존대로 유지
+
+    // ESC 키로 모달 닫기
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const overlay = document.getElementById('rolling-detail-overlay');
+        if (overlay && overlay.style.display === 'flex') {
+          closeModal();
+        }
+      }
+    });
+    // 영어관/수학관 체험하기 함수 (개선)
     function goToEnglishExpo() {
-      window.location.href = 'web-expo.html?tab=english#exhibition';
+      // 로딩 상태 표시
+      const btn = event.target.closest('.subject-card');
+      if (btn) {
+        btn.style.pointerEvents = 'none';
+        btn.style.opacity = '0.7';
+      }
+      
+      setTimeout(() => {
+        window.location.href = 'web-expo.html?tab=english#exhibition';
+      }, 300);
     }
+    
     function goToMathExpo() {
-      window.location.href = 'web-expo.html?tab=math#exhibition';
+      // 로딩 상태 표시
+      const btn = event.target.closest('.subject-card');
+      if (btn) {
+        btn.style.pointerEvents = 'none';
+        btn.style.opacity = '0.7';
+      }
+      
+      setTimeout(() => {
+        window.location.href = 'web-expo.html?tab=math#exhibition';
+      }, 300);
     }
+
+    // 성능 최적화: 디바운스 함수
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // 스크롤 이벤트 최적화
+    const optimizedScrollHandler = debounce(function() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      
+      const progressBar = document.querySelector('.scroll-progress-bar');
+      if (progressBar) {
+        progressBar.style.width = scrollPercent + '%';
+      }
+
+      // 네비게이션 스타일 변경
+      const gnb = document.querySelector('.gnb');
+      if (scrollTop > 100) {
+        gnb.classList.add('scrolled');
+      } else {
+        gnb.classList.remove('scrolled');
+      }
+    }, 10);
+
+    window.addEventListener('scroll', optimizedScrollHandler);
     // AI 추천 시스템 상세 2페이지 슬라이드 전환 (버튼 위치/표시 보완)
     (function(){
       const nextBtn = document.getElementById('ai7-next-btn');

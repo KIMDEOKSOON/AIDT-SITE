@@ -203,6 +203,103 @@
     @media (max-width: 700px) {
       .floating-apply-btn { right: 12px; bottom: 12px; padding: 14px 18px; font-size: 1rem; }
     }
+    .remote-banner {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      background: linear-gradient(90deg, #7b6eea 0%, #1ec9a8 100%);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(30,41,80,0.10);
+      padding: 36px 38px;
+      margin: 48px 0 0 0;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInRemote 0.8s cubic-bezier(.4,1.4,.6,1);
+    }
+    .remote-banner .remote-icon {
+      min-width: 72px;
+      min-height: 72px;
+      width: 72px;
+      height: 72px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.7rem;
+      box-shadow: 0 2px 12px rgba(30,41,80,0.10);
+      margin-right: 12px;
+    }
+    .remote-banner .remote-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      text-align: center;
+    }
+    .remote-banner .remote-title {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: #ffe14f;
+      margin-bottom: 2px;
+      letter-spacing: -1px;
+      text-align: center;
+    }
+    .remote-banner .remote-desc {
+      font-size: 1.13rem;
+      color: #f8f9fa;
+      font-weight: 400;
+      margin-bottom: 0;
+      text-align: center;
+    }
+    .remote-banner .remote-btn {
+      margin-top: 16px;
+      background: #fff;
+      color: #7b6eea;
+      font-size: 1.18rem;
+      font-weight: 700;
+      padding: 18px 44px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(123,110,234,0.10);
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.18s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .remote-banner .remote-btn:hover {
+      background: #ffe14f;
+      color: #7b6eea;
+      box-shadow: 0 4px 16px rgba(123,110,234,0.18);
+      transform: translateY(-2px) scale(1.04);
+    }
+    @media (max-width: 700px) {
+      .remote-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px 14px;
+        gap: 18px;
+      }
+      .remote-banner .remote-icon {
+        margin-right: 0;
+        margin-bottom: 8px;
+      }
+      .remote-banner .remote-title {
+        font-size: 1.13rem;
+      }
+      .remote-banner .remote-btn {
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+        padding: 13px 0;
+      }
+    }
+    @keyframes fadeInRemote {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -283,10 +380,12 @@
         </div>
       </section>
     </div>
-    <div class="support-contact" style="margin-top:40px;">
-      <strong>원격지원/컨설팅</strong>이 필요하신가요?<br>
-      1:1 맞춤 컨설팅, 원격지원 등 다양한 지원 서비스를 제공합니다.<br>
-      <a href="teacher-training.html" class="support-btn" style="margin-top:14px;">맞춤 교원 연수 신청</a>
+    <div class="remote-banner fade-in">
+      <div class="remote-content">
+        <div class="remote-title">원격지원/컨설팅이 필요하신가요?</div>
+        <div class="remote-desc">1:1 맞춤 컨설팅, 원격지원 등 다양한 지원 서비스를 제공합니다.</div>
+        <a href="teacher-training.html" class="remote-btn">맞춤 교원 연수 신청</a>
+      </div>
     </div>
   </main>
 
