@@ -385,6 +385,28 @@
         margin-bottom: 15px !important;
       }
     }
+    .aidt-tutorial-tab.active {
+      background: #fff !important;
+      color: #2ec6c6 !important;
+      box-shadow: 0 4px 16px rgba(46,198,198,0.18) !important;
+      border: 2px solid #2ec6c6 !important;
+      font-weight: 800 !important;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    }
+    .aidt-tutorial-tab {
+      background: rgba(255,255,255,0.18);
+      color: #2ec6c6;
+      border: 2px solid #fff;
+      font-weight: 700;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      font-size: 1.08rem;
+      padding: 12px 28px;
+      border-radius: 24px;
+      box-shadow: 0 2px 8px rgba(30,41,80,0.08);
+      margin-bottom: 8px;
+      outline: none;
+      min-width: 150px;
+    }
   </style>
 </head>
 <body>
@@ -524,6 +546,85 @@
   </div>
   <!-- 영어관 상세: 처음엔 숨김, 버튼 클릭 시 보임 -->
           <div id="english-detail" style="display:none;max-width:1400px;margin:0 auto 60px auto;">
+    <!-- AIDT 튜토리얼: AI와 함께하는 다채로운 수업 -->
+    <section id="aidt-tutorial" style="background:linear-gradient(135deg,#2ec6c6 0%,#6be0e0 100%);border-radius:24px;padding:48px 0 36px 0;margin-bottom:48px;box-shadow:0 4px 24px rgba(46,198,198,0.10);">
+      <h2 style="font-size:2.1rem;color:#fff;font-weight:700;margin-bottom:32px;text-align:center;letter-spacing:-1px;">아이스크림 AIDT와 함께 하는 <span style='color:#ffe14f;'>다채로운 수업</span></h2>
+      <div class="aidt-tutorial-main" style="background:#fff;border-radius:18px;box-shadow:0 2px 12px rgba(30,41,80,0.10);padding:36px 24px 32px 24px;max-width:800px;min-height:480px;height:480px;max-height:480px;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 36px auto;overflow-y:auto;">
+        <img id="aidt-tutorial-img" src="https://upload.wikimedia.org/wikipedia/commons/8/83/Africa_map_blank.png" alt="아프리카 지도 예시" style="width:100%;max-width:480px;display:block;margin:0 auto 24px auto;border-radius:12px;box-shadow:0 2px 8px rgba(30,41,80,0.08);">
+        <div style="margin:0 auto 18px auto;max-width:480px;text-align:center;">
+          <div id="aidt-tutorial-desc" style="background:#f8f9fa;border-radius:8px;padding:18px 16px;font-size:1.08rem;color:#222;box-shadow:0 1px 4px rgba(30,41,80,0.06);display:inline-block;">
+            Lagos is one of the fastest-growing cities in Africa.<br>
+            It is also famous for its fascinating music culture.<br>
+            A number of styles of music have evolved in this city.
+          </div>
+        </div>
+        <!-- 지도 위 포인트(예시) -->
+        <div style="display:flex;justify-content:center;gap:16px;margin-top:18px;">
+          <div style="background:#2ec6c6;color:#fff;font-weight:700;border-radius:8px;padding:8px 18px;font-size:1.08rem;">1</div>
+          <div style="background:#2ec6c6;color:#fff;font-weight:700;border-radius:8px;padding:8px 18px;font-size:1.08rem;">2</div>
+          <div style="background:#2ec6c6;color:#fff;font-weight:700;border-radius:8px;padding:8px 18px;font-size:1.08rem;">3</div>
+          <div style="background:#2ec6c6;color:#fff;font-weight:700;border-radius:8px;padding:8px 18px;font-size:1.08rem;">4</div>
+        </div>
+      </div>
+      <div id="aidt-tutorial-tabs" style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;">
+        <button class="aidt-tutorial-tab active" data-tab="content">수준별 화면 구성</button>
+        <button class="aidt-tutorial-tab" data-tab="dashboard">놀이기반 활동 지원</button>
+        <button class="aidt-tutorial-tab" data-tab="tutor">다차원 상호작용</button>
+        <button class="aidt-tutorial-tab" data-tab="prescription">AI 보조교사</button>
+        <button class="aidt-tutorial-tab" data-tab="uiux">분석 대시보드</button>
+      </div>
+      <script>
+        const aidtTutorialData = {
+          content: {
+            desc: `Lagos is one of the fastest-growing cities in Africa.<br>It is also famous for its fascinating music culture.<br>A number of styles of music have evolved in this city.`,
+            img: "https://upload.wikimedia.org/wikipedia/commons/8/83/Africa_map_blank.png"
+          },
+          dashboard: {
+            desc: `대시보드 예시 설명입니다.<br>학생별 학습 현황, 과제, 피드백을 한눈에 확인할 수 있습니다.`,
+            img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80"
+          },
+          tutor: {
+            desc: `튜터 예시 설명입니다.<br>AI 튜터가 학생의 학습을 실시간으로 지원합니다.`,
+            img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80"
+          },
+          prescription: {
+            desc: `학습 처방 예시 설명입니다.<br>AI가 학생별 맞춤 학습 처방을 제공합니다.`,
+            img: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=600&q=80"
+          },
+          uiux: {
+            desc: `편리한 UI/UX 예시 설명입니다.<br>누구나 쉽게 사용할 수 있는 직관적인 인터페이스.`,
+            img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+          },
+          flexible: {
+            desc: `유연한 사용 예시 설명입니다.<br>다양한 환경과 기기에서 자유롭게 활용 가능합니다.`,
+            img: "https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=600&q=80"
+          }
+        };
+        document.querySelectorAll('.aidt-tutorial-tab').forEach(btn => {
+          btn.addEventListener('click', function() {
+            document.querySelectorAll('.aidt-tutorial-tab').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const tab = this.getAttribute('data-tab');
+            document.getElementById('aidt-tutorial-desc').innerHTML = aidtTutorialData[tab].desc;
+            document.getElementById('aidt-tutorial-img').src = aidtTutorialData[tab].img;
+          });
+        });
+        // 영어관 바로가기 클릭 시 튜토리얼로 스크롤 이동
+        if (typeof window.__aidtTutorialScrollBind === 'undefined') {
+          window.__aidtTutorialScrollBind = true;
+          const showEnglishBtn = document.getElementById('show-english-detail');
+          if (showEnglishBtn) {
+            showEnglishBtn.addEventListener('click', function() {
+              setTimeout(function() {
+                const tutorial = document.getElementById('aidt-tutorial');
+                if (tutorial) tutorial.scrollIntoView({behavior:'smooth', block:'start'});
+              }, 100);
+            });
+          }
+        }
+      </script>
+    </section>
+
     <!-- 수업 준비 -->
     <section id="english-prep" style="background:linear-gradient(135deg,#e3f0ff 0%,#f8f9ff 100%);border-radius:24px;padding:56px 0 48px 0;margin-bottom:48px;box-shadow:0 4px 24px rgba(123,110,234,0.08);">
       <h2 style="font-size:2.3rem;color:#222;font-weight:700;margin-bottom:40px;text-align:center;letter-spacing:-1px;">수업 준비</h2>
