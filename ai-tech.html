@@ -1028,16 +1028,50 @@
             extra:'#DKT  #지식맵  #학습 경로  #AI 매일수학  # AI 연산  #AI 매일영어'
           }
         ];
-        // 보러가기 버튼 클릭 시 상세 모달 표시
+        // 보러가기 버튼 클릭 시 상세 설명을 인라인으로 표시
         document.querySelectorAll('.ai-detail-btn').forEach((btn,idx)=>{
           btn.addEventListener('click',()=>{
-            const d = aiDetails[idx];
-            document.getElementById('ai-detail-title').textContent = d.title;
-            document.getElementById('ai-detail-img').innerHTML = `<img src="${d.img}" alt="" style="width:72px; height:72px;">`;
-            document.getElementById('ai-detail-desc').textContent = d.desc;
-            document.getElementById('ai-detail-extra').textContent = d.extra;
-            document.getElementById('ai-detail-modal').style.display = 'flex';
+            showAIDetailInline(idx);
           });
+        });
+        // 상세 설명 인라인 표시 함수
+        let currentAIDetailIdx = null;
+        function showAIDetailInline(idx) {
+          const d = aiDetails[idx];
+          const inline = document.getElementById('ai-detail-inline');
+          currentAIDetailIdx = idx;
+          // 좌우 화살표 버튼
+          let leftBtn = '';
+          let rightBtn = '';
+          if(idx > 0) {
+            leftBtn = `<button id='ai-detail-prev' style="position:absolute; left:-40px; top:50%; transform:translateY(-50%); background:#fff; border:2px solid #7b6eea; color:#7b6eea; border-radius:50%; width:48px; height:48px; font-size:2rem; font-weight:900; box-shadow:0 2px 12px #0001; cursor:pointer; z-index:2; transition:background 0.2s; display:flex; align-items:center; justify-content:center; line-height:48px; padding:0;"><span style='display:inline-block;'>&#8592;</span></button>`;
+          }
+          if(idx < aiDetails.length-1) {
+            rightBtn = `<button id='ai-detail-next' style="position:absolute; right:-40px; top:50%; transform:translateY(-50%); background:#fff; border:2px solid #7b6eea; color:#7b6eea; border-radius:50%; width:48px; height:48px; font-size:2rem; font-weight:900; box-shadow:0 2px 12px #0001; cursor:pointer; z-index:2; transition:background 0.2s; display:flex; align-items:center; justify-content:center; line-height:48px; padding:0;"><span style='display:inline-block;'>&#8594;</span></button>`;
+          }
+          inline.innerHTML = `
+            ${leftBtn}
+            <div style=\"font-size:2.1rem; font-weight:900; margin-bottom:32px; color:#7b6eea; letter-spacing:-1px;\">${d.title}</div>
+            <div style=\"margin-bottom:32px;\"><img src=\"${d.img}\" alt=\"\" style=\"width:104px; height:104px;\"></div>
+            <div style=\"font-size:1.25rem; color:#222; margin-bottom:22px; white-space:pre-line; line-height:1.8; font-weight:500;\">${d.desc}</div>
+            <div style=\"font-size:1.08rem; color:#1ec9a8; margin-top:18px; font-weight:700;\">${d.extra}</div>
+            ${rightBtn}
+          `;
+          inline.style.display = 'block';
+          inline.scrollIntoView({behavior:'smooth', block:'center'});
+          // 버튼 이벤트 연결
+          setTimeout(()=>{
+            const prevBtn = document.getElementById('ai-detail-prev');
+            const nextBtn = document.getElementById('ai-detail-next');
+            if(prevBtn) prevBtn.onclick = ()=>showAIDetailInline(idx-1);
+            if(nextBtn) nextBtn.onclick = ()=>showAIDetailInline(idx+1);
+          }, 10);
+        }
+        // 페이지 진입 시 첫 번째 상세(심층 지식 추적) 자동 표시 제거 (초기에는 상세 설명이 보이지 않음)
+        document.addEventListener('DOMContentLoaded', function() {
+          const inline = document.getElementById('ai-detail-inline');
+          inline.style.display = 'none';
+          inline.innerHTML = '';
         });
         // 모달 닫기
         function closeDetailModal(){
@@ -1055,90 +1089,15 @@
   </section>
 
   <!-- AI 아이콘 탭 섹션 -->
-  <section class="ai-icons-section" style="background:#fff; padding:0 0 60px 0;">
+  <section class="ai-icons-section" style="background:#fff; padding:0 0 60px 0; display:none;">
     <div style="max-width:1400px; margin:0 auto; padding:0 20px;">
-      <h2 class="fade-in" style="font-size:2.2rem; color:#2d3a8c; font-weight:bold; margin-bottom:32px; text-align:center;">아이스크림 AI 기술</h2>
-      <div class="ai-tab-menu">
-        <div class="ai-tab-card active" data-tab="llm" tabindex="0">
-          <div class="ai-tab-icon">
-            <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image1.png" alt="대형언어모델" style="width:38px; height:38px;">
-          </div>
-          <div class="ai-tab-label">대형언어모델(LLM)</div>
-        </div>
-        <div class="ai-tab-card" data-tab="image" tabindex="0">
-          <div class="ai-tab-icon">
-            <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image2.png" alt="이미지 생성" style="width:38px; height:38px;">
-          </div>
-          <div class="ai-tab-label">이미지 생성</div>
-        </div>
-        <div class="ai-tab-card" data-tab="sound" tabindex="0">
-          <div class="ai-tab-icon">
-            <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image3.png" alt="사운드 생성" style="width:38px; height:38px;">
-          </div>
-          <div class="ai-tab-label">사운드 생성</div>
-        </div>
-        <div class="ai-tab-card" data-tab="vision" tabindex="0">
-          <div class="ai-tab-icon">
-            <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image4.png" alt="이미지/동영상 인식" style="width:38px; height:38px;">
-          </div>
-          <div class="ai-tab-label">이미지(동영상) 인식</div>
-        </div>
-        <div class="ai-tab-card" data-tab="video" tabindex="0">
-          <div class="ai-tab-icon">
-            <img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image5.png" alt="동영상 생성" style="width:38px; height:38px;">
-          </div>
-          <div class="ai-tab-label">동영상 생성</div>
-        </div>
-      </div>
-      <div id="ai-tab-content" style="max-width:1200px; margin:0 auto;">
-        <!-- 대형언어모델(LLM) -->
-        <div class="ai-tab-panel fade-in" data-tab="llm" style="display:block;">
-          <h3 style="color: #7b6eea;"><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image1.png" alt="대형언어모델" style="width:28px; height:28px;"></span>대형언어모델(LLM)</h3>
-          <p style="color:#444; font-size:1.05rem; line-height:1.7; margin-bottom:18px;">아이스크림S, 클래스툴 등 다양한 서비스에 적용된 대형언어모델(LLM)은 자연어 처리 기반의 생성형 AI로, AI 평어 생성, 문제풀이 해설, 생활기록부 문장 합성 등 다양한 교육 현장에 활용되고 있습니다. 앞으로는 문서 기반 검색, 챗봇, 다국어 번역 등 전체 서비스로 확대 적용될 예정입니다.</p>
-          <ul style="color:#555; font-size:0.98rem; line-height:1.7; padding-left:18px;">
-            <li>AI 평어 생성, 문제풀이 해설, 생활기록부 문장 합성</li>
-            <li>문서 기반 검색, 챗봇, 다국어 번역 등 서비스 확대 예정</li>
-          </ul>
-        </div>
-        <!-- 이미지 생성 -->
-        <div class="ai-tab-panel fade-in" data-tab="image" style="display:none;">
-          <h3 style="color: #1ec9a8;"><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image2.png" alt="이미지 생성" style="width:28px; height:28px;"></span>이미지 생성</h3>
-          <p style="color:#444; font-size:1.05rem; line-height:1.7; margin-bottom:18px;">AI 이미지 생성 기술은 에듀뱅크, AI 클립아트 등에서 활용되며, 수업용 콘텐츠, 교과서 개발, 컬러링북, 협동화, 이미지 편집 등 다양한 교육 콘텐츠 제작에 적용되고 있습니다.</p>
-          <ul style="color:#555; font-size:0.98rem; line-height:1.7; padding-left:18px;">
-            <li>AI 이미지 생성, AI 클립아트</li>
-            <li>수업용 콘텐츠, 교과서 개발, 이미지 편집 등</li>
-          </ul>
-        </div>
-        <!-- 사운드 생성 -->
-        <div class="ai-tab-panel fade-in" data-tab="sound" style="display:none;">
-          <h3 style="color: #ffb347;"><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image3.png" alt="사운드 생성" style="width:28px; height:28px;"></span>사운드 생성</h3>
-          <p style="color:#444; font-size:1.05rem; line-height:1.7; margin-bottom:18px;">사운드 생성 AI는 아이스크림콜, 클래스툴 등에서 녹음(STT), 콘텐츠 더빙, 자동 자막 생성, 자동 회의록, 교사 목소리 변환, 영어 발음 교정 등 다양한 음성 기반 서비스에 적용되고 있습니다.</p>
-          <ul style="color:#555; font-size:0.98rem; line-height:1.7; padding-left:18px;">
-            <li>녹음(STT), 콘텐츠 더빙, 자동 자막/회의록 생성</li>
-            <li>교사 목소리 변환, 영어 발음 교정 등</li>
-          </ul>
-        </div>
-        <!-- 이미지(동영상) 인식 -->
-        <div class="ai-tab-panel fade-in" data-tab="vision" style="display:none;">
-          <h3 style="color: #4ecdc4;"><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image4.png" alt="이미지/동영상 인식" style="width:28px; height:28px;"></span>이미지(동영상) 인식</h3>
-          <p style="color:#444; font-size:1.05rem; line-height:1.7; margin-bottom:18px;">이미지 및 동영상 인식 AI는 AI Box, 받아쓰기 인식, 예쁜 글씨 쓰기, 학습 집중도 분석(얼굴/눈동자 인식), 감정 분석, 이미지 설명글 등 다양한 교과 활동과 연계되어 활용됩니다.</p>
-          <ul style="color:#555; font-size:0.98rem; line-height:1.7; padding-left:18px;">
-            <li>AI Box, 받아쓰기 인식, 예쁜 글씨 쓰기</li>
-            <li>학습 집중도 분석, 감정 분석, 이미지 설명글 등</li>
-          </ul>
-        </div>
-        <!-- 동영상 생성 -->
-        <div class="ai-tab-panel fade-in" data-tab="video" style="display:none;">
-          <h3 style="color: #f797fd;"><span class="ai-panel-icon"><img src="https://www.i-screammedia.com/front/imgs/r&d/R&D_goal_image5.png" alt="동영상 생성" style="width:28px; height:28px;"></span>동영상 생성</h3>
-          <p style="color:#444; font-size:1.05rem; line-height:1.7; margin-bottom:18px;">동영상 생성 AI는 시나리오, 이미지, 음성, 동영상 생성 등 다양한 모델 연구가 진행 중이며, 교육 관련 5분 이내 애니메이션, 실사/3D 동영상 등 다양한 교육 콘텐츠 제작에 적용될 예정입니다.</p>
-          <ul style="color:#555; font-size:0.98rem; line-height:1.7; padding-left:18px;">
-            <li>시나리오, 이미지, 음성, 동영상 생성</li>
-            <li>교육용 애니메이션, 실사/3D 동영상 등</li>
-          </ul>
-        </div>
-      </div>
+      <!-- 제목 및 모든 내용 삭제 -->
     </div>
   </section>
+
+  <!-- 상세 설명 인라인 표시 영역 (슬라이드 위) -->
+  <div id="ai-detail-inline" style="max-width:1100px; min-height:600px; margin:56px auto 48px auto; padding:64px 48px; background:#f8fafc; border-radius:36px; color:#222; font-size:1.25rem; display:none; box-shadow:0 8px 48px #0001; transition:all 0.3s; text-align:center; border:1.5px solid #e3e8ee; width:90vw; position:relative;"></div>
+  <div style="max-width:1100px; margin:0 auto 56px auto; border-bottom:2px solid #e3e8ee;"></div>
 
   <!-- 과목별 체험 섹션 -->
   <section style="background: linear-gradient(135deg, #7b6eea 0%, #1ec9a8 100%); padding: 60px 0;">
@@ -1579,5 +1538,21 @@
       <img src="i-scream-logo.png" alt="아이스크림미디어 로고" style="height: 40px;" />
     </a>
   </div>
+  <!-- 맨 위로 올라가는 화살표 버튼 -->
+  <button id="scrollToTopBtn" style="position:fixed; bottom:120px; right:48px; z-index:9999; width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,0.95); border:2.5px solid #7b6eea; box-shadow:0 4px 24px #0001; color:#7b6eea; font-size:2.5rem; display:none; align-items:center; justify-content:center; cursor:pointer; transition:background 0.2s, box-shadow 0.2s;"><span style='display:inline-block; transform:translateY(2px);'>&uarr;</span></button>
+  <script>
+    // 맨 위로 올라가는 버튼 동작
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    window.addEventListener('scroll', function() {
+      if(window.scrollY > 300) {
+        scrollToTopBtn.style.display = 'flex';
+      } else {
+        scrollToTopBtn.style.display = 'none';
+      }
+    });
+    scrollToTopBtn.addEventListener('click', function() {
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  </script>
 </body>
 </html> 
