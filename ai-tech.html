@@ -762,6 +762,43 @@
         padding: 18px 6vw !important;
       }
     }
+
+    /* ... 기존 스타일 ... */
+    .ai-slide {
+      transition:
+        border-radius 0.32s cubic-bezier(.4,0,.2,1),
+        background 0.32s cubic-bezier(.4,0,.2,1),
+        box-shadow 0.32s cubic-bezier(.4,0,.2,1),
+        transform 0.32s cubic-bezier(.4,0,.2,1),
+        opacity 0.32s cubic-bezier(.4,0,.2,1),
+        color 0.32s cubic-bezier(.4,0,.2,1);
+    }
+    .ai-slide:hover {
+      border-radius: 160px;
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 16px 48px 0 rgba(30,41,80,0.22), 0 0 0 4px #7b6eea22;
+      transform: scale(1.07);
+      opacity: 1;
+      color: #222;
+    }
+    .ai-slide:hover .ai-detail-btn {
+      filter: brightness(0.95) contrast(1.2);
+    }
+    .ai-slide:hover img {
+      filter: drop-shadow(0 2px 12px #7b6eea33);
+    }
+    #ai-slide-track {
+      gap: 48px !important;
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .ai-slide:hover {
+        border-radius: 24px;
+        background: #333;
+        box-shadow: 0 4px 16px rgba(30,41,80,0.10);
+        transform: none;
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
@@ -821,74 +858,68 @@
       <div id="ai-slide-wrapper" style="max-width:1100px; margin:0 auto 40px auto; position:relative;">
         <div id="ai-slide-track" style="display:flex; transition:transform 0.5s; gap:32px;">
           <div class="ai-slide" data-detail="0" style="flex:0 0 340px; max-width:340px; min-width:240px; min-height:320px; max-height:340px; background:#333; color:#fff; border-radius:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 18px; font-size:1.08rem; font-weight:700; text-align:center; position:relative; overflow:hidden; margin:0 auto;">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="학생 주도형 학습 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
-            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">학생 주도형 학습 강화</div>
-            <div style="font-size:1.05rem; color:#fff; font-weight:400;">조작 활동, 놀이, 프로젝트 중심의 수업 구성과 이야기 중심 단원 도입으로 흥미 유발</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="심층 지식 추적 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
+            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">심층 지식 추적</div>
+            <div style="font-size:1.05rem; color:#fff; font-weight:400;">DKT (Deep Knowledge Tracing)</div>
             <button class="ai-detail-btn" style="display:none; position:absolute; bottom:32px; left:50%; transform:translateX(-50%); background:#2196f3; color:#fff; border:none; border-radius:20px; padding:10px 32px; font-size:1.1rem; font-weight:700; cursor:pointer; box-shadow:0 4px 16px #0002; transition:background 0.2s;">보러가기</button>
           </div>
           <div class="ai-slide" data-detail="1" style="flex:0 0 340px; max-width:340px; min-width:240px; min-height:320px; max-height:340px; background:#333; color:#fff; border-radius:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 18px; font-size:1.08rem; font-weight:700; text-align:center; position:relative; overflow:hidden; margin:0 auto;">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135716.png" alt="수준별 학습 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
-            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">학습자의 수준과 발달을 고려한 구성</div>
-            <div style="font-size:1.05rem; color:#fff; font-weight:400;">성취 기준에 맞춘 학습량 조절 및 난이도 차등화, 자기주도 학습을 위한 평가 및 피드백</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135716.png" alt="음성인식 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
+            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">음성인식</div>
+            <div style="font-size:1.05rem; color:#fff; font-weight:400;">STT (Speech to Text)</div>
             <button class="ai-detail-btn" style="display:none; position:absolute; bottom:32px; left:50%; transform:translateX(-50%); background:#2196f3; color:#fff; border:none; border-radius:20px; padding:10px 32px; font-size:1.1rem; font-weight:700; cursor:pointer; box-shadow:0 4px 16px #0002; transition:background 0.2s;">보러가기</button>
-          </div>
+        </div>
           <div class="ai-slide" data-detail="2" style="flex:0 0 340px; max-width:340px; min-width:240px; min-height:320px; max-height:340px; background:#333; color:#fff; border-radius:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 18px; font-size:1.08rem; font-weight:700; text-align:center; position:relative; overflow:hidden; margin:0 auto;">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135717.png" alt="다양한 표현 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
-            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">다양한 표현 수단과 상호작용 설계</div>
-            <div style="font-size:1.05rem; color:#fff; font-weight:400;">자막, 대본, 영상 속 텍스트 등 시청각 정보 다중 제공과 인터랙티브 문항 구성</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135717.png" alt="발음 평가 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
+            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">발음 평가</div>
+            <div style="font-size:1.05rem; color:#fff; font-weight:400;">Pronunciation Evaluation</div>
             <button class="ai-detail-btn" style="display:none; position:absolute; bottom:32px; left:50%; transform:translateX(-50%); background:#2196f3; color:#fff; border:none; border-radius:20px; padding:10px 32px; font-size:1.1rem; font-weight:700; cursor:pointer; box-shadow:0 4px 16px #0002; transition:background 0.2s;">보러가기</button>
           </div>
           <div class="ai-slide" data-detail="3" style="flex:0 0 340px; max-width:340px; min-width:240px; min-height:320px; max-height:340px; background:#333; color:#fff; border-radius:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 18px; font-size:1.08rem; font-weight:700; text-align:center; position:relative; overflow:hidden; margin:0 auto;">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135718.png" alt="실생활 연계 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
-            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">실생활 연계와 창의적 사고 유도</div>
-            <div style="font-size:1.05rem; color:#fff; font-weight:400;">실생활 문제 해결 중심 프로젝트형 수업과 개념 응용을 위한 놀이 기반 활동</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135718.png" alt="음성합성 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
+            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">음성합성</div>
+            <div style="font-size:1.05rem; color:#fff; font-weight:400;">TTS (Text to Speech)</div>
             <button class="ai-detail-btn" style="display:none; position:absolute; bottom:32px; left:50%; transform:translateX(-50%); background:#2196f3; color:#fff; border:none; border-radius:20px; padding:10px 32px; font-size:1.1rem; font-weight:700; cursor:pointer; box-shadow:0 4px 16px #0002; transition:background 0.2s;">보러가기</button>
-          </div>
+        </div>
           <div class="ai-slide" data-detail="4" style="flex:0 0 340px; max-width:340px; min-width:240px; min-height:320px; max-height:340px; background:#333; color:#fff; border-radius:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 18px; font-size:1.08rem; font-weight:700; text-align:center; position:relative; overflow:hidden; margin:0 auto;">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135719.png" alt="전용 기능 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
-            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">교사와 학생을 위한 전용 기능 제공</div>
-            <div style="font-size:1.05rem; color:#fff; font-weight:400;">교사용 수업 재구성 도구 및 과제 자동 출제 시스템, AI 추천 자료 기반 수업 설계</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135719.png" alt="손글씨 인식 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
+            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">손글씨 인식</div>
+            <div style="font-size:1.05rem; color:#fff; font-weight:400;">CNN (Convolutional Neural Network)</div>
             <button class="ai-detail-btn" style="display:none; position:absolute; bottom:32px; left:50%; transform:translateX(-50%); background:#2196f3; color:#fff; border:none; border-radius:20px; padding:10px 32px; font-size:1.1rem; font-weight:700; cursor:pointer; box-shadow:0 4px 16px #0002; transition:background 0.2s;">보러가기</button>
           </div>
           <div class="ai-slide" data-detail="5" style="flex:0 0 340px; max-width:340px; min-width:240px; min-height:320px; max-height:340px; background:#333; color:#fff; border-radius:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 18px; font-size:1.08rem; font-weight:700; text-align:center; position:relative; overflow:hidden; margin:0 auto;">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135720.png" alt="다차원 상호작용 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
-            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">다차원 상호작용 지원</div>
-            <div style="font-size:1.05rem; color:#fff; font-weight:400;">학생-콘텐츠, 학생-AI 튜터, 학생-학생 간 상호작용 도구와 모둠 도구, 협업 기능 제공</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135720.png" alt="지식맵 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
+            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">지식맵</div>
+            <div style="font-size:1.05rem; color:#fff; font-weight:400;">Knowledge Map</div>
             <button class="ai-detail-btn" style="display:none; position:absolute; bottom:32px; left:50%; transform:translateX(-50%); background:#2196f3; color:#fff; border:none; border-radius:20px; padding:10px 32px; font-size:1.1rem; font-weight:700; cursor:pointer; box-shadow:0 4px 16px #0002; transition:background 0.2s;">보러가기</button>
-          </div>
+        </div>
           <div class="ai-slide" data-detail="6" style="flex:0 0 340px; max-width:340px; min-width:240px; min-height:320px; max-height:340px; background:#333; color:#fff; border-radius:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 18px; font-size:1.08rem; font-weight:700; text-align:center; position:relative; overflow:hidden; margin:0 auto;">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135721.png" alt="AI 추천 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
-            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">AI 추천 시스템</div>
-            <div style="font-size:1.05rem; color:#fff; font-weight:400;">학습 이력과 문항 유사성 기반 맞춤형 문항 추천, 협업 필터링으로 학습 패턴 분석</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135721.png" alt="시각화 DB 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
+            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">시각화 DB</div>
+            <div style="font-size:1.05rem; color:#fff; font-weight:400;">GraphDB</div>
             <button class="ai-detail-btn" style="display:none; position:absolute; bottom:32px; left:50%; transform:translateX(-50%); background:#2196f3; color:#fff; border:none; border-radius:20px; padding:10px 32px; font-size:1.1rem; font-weight:700; cursor:pointer; box-shadow:0 4px 16px #0002; transition:background 0.2s;">보러가기</button>
           </div>
           <div class="ai-slide" data-detail="7" style="flex:0 0 340px; max-width:340px; min-width:240px; min-height:320px; max-height:340px; background:#333; color:#fff; border-radius:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 18px; font-size:1.08rem; font-weight:700; text-align:center; position:relative; overflow:hidden; margin:0 auto;">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135722.png" alt="지식맵 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
-            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">지식맵 기반 맞춤형 학습 경로 제공</div>
-            <div style="font-size:1.05rem; color:#fff; font-weight:400;">성취 기준 중심 지식맵 구성, 각 개념의 이해도를 분석하여 개별 학습 경로 추천</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135722.png" alt="AI 보조교사 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
+            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">AI 보조교사</div>
+            <div style="font-size:1.05rem; color:#fff; font-weight:400;">AI Assistant</div>
             <button class="ai-detail-btn" style="display:none; position:absolute; bottom:32px; left:50%; transform:translateX(-50%); background:#2196f3; color:#fff; border:none; border-radius:20px; padding:10px 32px; font-size:1.1rem; font-weight:700; cursor:pointer; box-shadow:0 4px 16px #0002; transition:background 0.2s;">보러가기</button>
-          </div>
+        </div>
           <div class="ai-slide" data-detail="8" style="flex:0 0 340px; max-width:340px; min-width:240px; min-height:320px; max-height:340px; background:#333; color:#fff; border-radius:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 18px; font-size:1.08rem; font-weight:700; text-align:center; position:relative; overflow:hidden; margin:0 auto;">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135723.png" alt="AI 보조교사 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
-            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">AI 보조교사 기능</div>
-            <div style="font-size:1.05rem; color:#fff; font-weight:400;">교사에게 학생별 학습 현황, 추천 과제, 평어 제공, 수업 전·중·후 진단 및 피드백 관리</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135723.png" alt="AI 튜터 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
+            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">AI 튜터</div>
+            <div style="font-size:1.05rem; color:#fff; font-weight:400;">AI Tutor</div>
             <button class="ai-detail-btn" style="display:none; position:absolute; bottom:32px; left:50%; transform:translateX(-50%); background:#2196f3; color:#fff; border:none; border-radius:20px; padding:10px 32px; font-size:1.1rem; font-weight:700; cursor:pointer; box-shadow:0 4px 16px #0002; transition:background 0.2s;">보러가기</button>
           </div>
           <div class="ai-slide" data-detail="9" style="flex:0 0 340px; max-width:340px; min-width:240px; min-height:320px; max-height:340px; background:#333; color:#fff; border-radius:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 18px; font-size:1.08rem; font-weight:700; text-align:center; position:relative; overflow:hidden; margin:0 auto;">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135724.png" alt="AI 튜터 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
-            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">AI 튜터 기능</div>
-            <div style="font-size:1.05rem; color:#fff; font-weight:400;">학생의 학습 성과 분석 후 부족한 개념 중심 보충 콘텐츠 제공, 음성 인식 및 챗봇형 대응</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135724.png" alt="맞춤형 학습 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
+            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">맞춤형 학습</div>
+            <div style="font-size:1.05rem; color:#fff; font-weight:400;">Courseware</div>
             <button class="ai-detail-btn" style="display:none; position:absolute; bottom:32px; left:50%; transform:translateX(-50%); background:#2196f3; color:#fff; border:none; border-radius:20px; padding:10px 32px; font-size:1.1rem; font-weight:700; cursor:pointer; box-shadow:0 4px 16px #0002; transition:background 0.2s;">보러가기</button>
-          </div>
-          <div class="ai-slide" data-detail="10" style="flex:0 0 340px; max-width:340px; min-width:240px; min-height:320px; max-height:340px; background:#333; color:#fff; border-radius:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 18px; font-size:1.08rem; font-weight:700; text-align:center; position:relative; overflow:hidden; margin:0 auto;">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135725.png" alt="학습 분석 아이콘" style="width:64px; height:64px; margin-bottom:18px;">
-            <div style="font-size:1.45rem; color:#7b6eea; font-weight:800; margin-bottom:10px;">학습 분석 대시보드</div>
-            <div style="font-size:1.05rem; color:#fff; font-weight:400;">학생/학급 단위 성취도, 진도, 강약점 분석, 시각화된 리포트로 학습 현황 인지</div>
-            <button class="ai-detail-btn" style="display:none; position:absolute; bottom:32px; left:50%; transform:translateX(-50%); background:#2196f3; color:#fff; border:none; border-radius:20px; padding:10px 32px; font-size:1.1rem; font-weight:700; cursor:pointer; box-shadow:0 4px 16px #0002; transition:background 0.2s;">보러가기</button>
-          </div>
         </div>
+          </div>
         <div id="ai-slide-dots" style="display:flex; justify-content:center; gap:12px; margin-top:22px;"></div>
-      </div>
+        </div>
       <!-- 상세 설명 모달 -->
       <div id="ai-detail-modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(20,20,40,0.75); align-items:center; justify-content:center;">
         <div id="ai-detail-card" style="background:#222; color:#fff; border-radius:24px; max-width:420px; width:90vw; padding:38px 28px 28px 28px; box-shadow:0 8px 32px #0006; position:relative; text-align:center;">
@@ -897,8 +928,8 @@
           <div id="ai-detail-img" style="margin-bottom:18px;"></div>
           <div id="ai-detail-desc" style="font-size:1.08rem; color:#fff; margin-bottom:10px;"></div>
           <div id="ai-detail-extra" style="font-size:0.98rem; color:#b2f5ea;"></div>
+          </div>
         </div>
-      </div>
       <script>
         // ... 기존 슬라이드 코드 ...
         const slideTrack = document.getElementById('ai-slide-track');
@@ -937,70 +968,64 @@
         // 상세 설명 데이터 (샘플)
         const aiDetails = [
           {
-            title:'학생 주도형 학습 강화',
+            title:'심층 지식 추적',
             img:'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
-            desc:'학생이 주도적으로 참여하는 수업 설계와 다양한 활동 중심의 학습 경험을 제공합니다.',
-            extra:'예시: 프로젝트 기반 학습, 놀이형 수업, 이야기 도입 등'
+            desc:'딥러닝 기술을 활용하여 학습자의 학습 패턴을 분석합니다.\n개인별 지식 수준을 분석하여 수준별 맞춤형 학습을 지원합니다.',
+            extra:'#지식맵 연계 #코스웨어  #맞춤형 학습'
           },
           {
-            title:'학습자의 수준과 발달을 고려한 구성',
+            title:'음성인식',
             img:'https://cdn-icons-png.flaticon.com/512/3135/3135716.png',
-            desc:'학생별 수준과 발달 단계에 맞춘 맞춤형 학습 경로와 평가, 피드백을 지원합니다.',
-            extra:'예시: 난이도 조절, 자기주도 평가, 피드백 자동화'
+            desc:'영어 학습 시 학습자가 발화한 음성을 정확하게 인식하는 기술입니다.\n음성을 텍스트로 변환하기 위하여 딥러닝 기술이 적용되었습니다.',
+            extra:'#딥러닝  #발음 평가'
           },
           {
-            title:'다양한 표현 수단과 상호작용 설계',
+            title:'발음 평가',
             img:'https://cdn-icons-png.flaticon.com/512/3135/3135717.png',
-            desc:'시청각 정보와 인터랙티브 요소를 활용해 학습 몰입도를 높입니다.',
-            extra:'예시: 자막, 영상 대본, 인터랙티브 문항 등'
+            desc:'영어 학습 시 학습자의 발음을 정확하게 분석하여 평가하는 기술입니다.\n음소 및 음가 단위까지 정밀하게 분석하고 의미 단위 별로 텍스트를 청킹(Chunking)하여 보여줌으로써 효과적으로 발화 능력을 향상할 수 있도록 지원합니다.',
+            extra:'#발음 평가 #음소 평가 #음가 평가 #청킹(Chunking)'
           },
           {
-            title:'실생활 연계와 창의적 사고 유도',
+            title:'음성합성',
             img:'https://cdn-icons-png.flaticon.com/512/3135/3135718.png',
-            desc:'실생활 문제 해결 중심의 프로젝트와 창의적 사고를 자극하는 활동을 제공합니다.',
-            extra:'예시: 실생활 문제, 놀이 기반 응용'
+            desc:'시각 장애인 학습자를 지원하기 위하여 텍스트를 음성으로 전환하는 기술을 제공합니다.\n교과서 상에서 원하는 부분을 드래그하면 음성이 출력됩니다.',
+            extra:'#UDL  #접근성'
           },
           {
-            title:'교사와 학생을 위한 전용 기능 제공',
+            title:'손글씨 인식',
             img:'https://cdn-icons-png.flaticon.com/512/3135/3135719.png',
-            desc:'교사용 수업 재구성, 과제 자동 출제, AI 추천 자료 등 다양한 전용 기능을 지원합니다.',
-            extra:'예시: 수업 설계 도구, 자동 과제 출제'
+            desc:'학습자가 손으로 정답을 쓸 수 있도록 손글씨 인식 기술을 제공합니다.\n키보드로 입력이 힘든 다양한 수식 기호도 쉽게 입력할 수 있습니다.',
+            extra:'#딥러닝  #UDL  #접근성'
           },
           {
-            title:'다차원 상호작용 지원',
+            title:'지식맵',
             img:'https://cdn-icons-png.flaticon.com/512/3135/3135720.png',
-            desc:'학생-콘텐츠, 학생-AI 튜터, 학생-학생 간 상호작용 및 협업 도구를 제공합니다.',
-            extra:'예시: 모둠 도구, 협업 기능, AI 튜터'
+            desc:'모든 교과에서 배우는 개념을 최소 단위로 쪼개어 노드로 구성하고 연관 개념간의 관계를 구조화하여 하나의 맵으로 구조화하였습니다.\n개별 학습자의 강약을 분석하고 취약점을 정밀 진단하여 맞춤형 학습을 제공할 수 있는 기반이 됩니다.',
+            extra:'#DKT #코스웨어 #맞춤형 학습'
           },
           {
-            title:'AI 추천 시스템',
+            title:'시각화 DB',
             img:'https://cdn-icons-png.flaticon.com/512/3135/3135721.png',
-            desc:'학습 이력과 패턴을 분석해 맞춤형 문항과 자료를 추천합니다.',
-            extra:'예시: 협업 필터링, 유사 문항 추천'
+            desc:'교과에서 배우는 각 개념(노드)간 연간 관계 및 관계의 강약을 시각적으로 데이터베이스화 하였습니다.\n학습이 이루어지면 실시간으로 DB에 반영되고 학습 수준이 갱신되어 실시간 학습 상태 추척이 가능합니다.',
+            extra:'#지식맵  #시각화  #맞춤형 학습'
           },
           {
-            title:'지식맵 기반 맞춤형 학습 경로 제공',
+            title:'AI 보조교사',
             img:'https://cdn-icons-png.flaticon.com/512/3135/3135722.png',
-            desc:'지식맵을 활용해 개별 학생의 이해도에 맞는 학습 경로를 안내합니다.',
-            extra:'예시: 성취 기준 기반 지식맵, 개별 경로 추천'
+            desc:'선생님의 업무를 경감시켜주는 보조교사입니다.\nAI가 수업 현황, 평가 현황, 학생 성취도, 감정 날씨, 과제 현황 등 실시간 현황을 분석하여 제공합니다.',
+            extra:'#생성형 AI  #LLM'
           },
           {
-            title:'AI 보조교사 기능',
+            title:'AI 튜터',
             img:'https://cdn-icons-png.flaticon.com/512/3135/3135723.png',
-            desc:'교사에게 학생별 학습 현황, 추천 과제, 평어 등 다양한 지원을 제공합니다.',
-            extra:'예시: 진단/피드백 자동화, 추천 과제'
+            desc:'학생들의 학습을 지원하는 보조 선생님입니다.\nAI가 오늘의 수업 정보, 학습 목표, 과제 현황 등을 분석하여 제공하며, 과제 완료 전략, 과제 관리 팀 등을 제공합니다.\n영어 사전 기능, 단어 퀴즈 기능, 문장 만들기 기능 등 영어 기초 학력을 키울 수 있는 콘텐츠도 제공합니다.',
+            extra:'#생성형 AI  #LLM'
           },
           {
-            title:'AI 튜터 기능',
+            title:'맞춤형 학습',
             img:'https://cdn-icons-png.flaticon.com/512/3135/3135724.png',
-            desc:'학생의 학습 성과를 분석해 부족한 개념을 보충하고, 챗봇형 AI가 대응합니다.',
-            extra:'예시: 음성 인식, 챗봇형 튜터'
-          },
-          {
-            title:'학습 분석 대시보드',
-            img:'https://cdn-icons-png.flaticon.com/512/3135/3135725.png',
-            desc:'학생/학급 단위의 성취도, 진도, 강약점 등을 시각화하여 제공합니다.',
-            extra:'예시: 리포트, 시각화 대시보드'
+            desc:'진단 평가를 통해 학습자의 수준을 진단하고 그 결과에 따라 수준에 맞는 콘텐츠를 제공합니다.\n실시간으로 학습 결과를 분석하여 결과를 지식맵에 반영하여 최적의 학습 경로를 제시합니다.',
+            extra:'#DKT  #지식맵  #학습 경로  #AI 매일수학  # AI 연산  #AI 매일영어'
           }
         ];
         // 보러가기 버튼 클릭 시 상세 모달 표시
