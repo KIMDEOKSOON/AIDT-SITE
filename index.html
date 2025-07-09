@@ -351,10 +351,8 @@
     <section style="position:relative; text-align:center;">
       <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80" alt="AIDT 메인 배너 예시" style="width:100%; border-radius:16px 16px 0 0; max-height:340px; object-fit:cover;">
       <!-- 아이스크림미디어 로고를 제목 위로 이동 -->
-      <div style="position:absolute; left:0; right:0; top:38px; text-align:center; z-index:2;">
-        <img src="i-scream-logo.png" alt="아이스크림미디어 로고" style="height: 48px;" />
-      </div>
-      <h2 style="position:absolute; left:0; right:0; top:110px; color:#222; font-size:2.1rem; text-align:center; z-index:2;">아이스크림 AIDT를 소개합니다</h2>
+      <!-- 로고 제거됨 -->
+      <h2 style="position:absolute; left:0; right:0; top:110px; color:#fff; font-size:3rem; text-align:center; z-index:2; font-weight:900; letter-spacing:-1px; text-shadow:0 4px 18px rgba(30,41,80,0.38), 0 1.5px 0 #222;">아이스크림 AIDT를 소개합니다</h2>
     </section>
 
     <!-- 소개영상 섹션 -->
@@ -565,8 +563,14 @@
     </section>
 
     <!-- 성과 카드 -->
-    <section id="result-section" style="padding:40px 32px 0 32px;">
-      <h2 style="text-align:center;font-size:2.2rem;margin-bottom:2.5rem;color:#234;font-weight:700;letter-spacing:-1px;">아이스크림AIDT의 성과</h2>
+    <div style="background:linear-gradient(90deg,#e8e6ff 0%,#e6fff4 100%); border-radius:28px; box-shadow:0 4px 24px rgba(123,110,234,0.10); padding:48px 24px 38px 24px; max-width:1200px; margin:0 auto 40px auto; display:flex; flex-direction:column; align-items:center;">
+      <h2 style="text-align:center;font-size:2.7rem;margin-bottom:1.7rem;color:#234;font-weight:800;letter-spacing:-1px;">스마트폰 사용하는 것만큼 쉽고 간단해요.</h2>
+      <div style="display:flex; gap:18px; flex-wrap:wrap; justify-content:center;">
+        <a href="#" style="background:#1e90ff; color:#fff; font-weight:700; font-size:1.08rem; border-radius:14px; padding:14px 32px; text-decoration:none; box-shadow:0 2px 8px rgba(30,144,255,0.10); transition:background 0.18s; display:inline-block;">선생님 매뉴얼 다운로드</a>
+        <a href="#" style="background:#43b97f; color:#fff; font-weight:700; font-size:1.08rem; border-radius:14px; padding:14px 32px; text-decoration:none; box-shadow:0 2px 8px rgba(67,185,127,0.10); transition:background 0.18s; display:inline-block;">학생 매뉴얼 다운로드</a>
+      </div>
+    </div>
+    <h2 style="text-align:center;font-size:2.2rem;margin-bottom:2.5rem;color:#234;font-weight:700;letter-spacing:-1px;">아이스크림AIDT의 성과</h2>
       <div style="display:flex; gap:32px; flex-wrap:wrap; justify-content:space-between;">
         <div style="flex:1; min-width:200px; background:#eaf4ff; border-radius:12px; padding:24px; display:flex; flex-direction:column; align-items:center;">
           <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="도입 학교 아이콘" style="width:48px; margin-bottom:8px;">
@@ -613,6 +617,7 @@
     {id: 'interview-section', menu: 'menu-interview'},
     {id: 'result-section', menu: 'menu-result'}
   ];
+  let manualActiveIdx = null;
   function onScrollFloatingMenu() {
     const scrollY = window.scrollY || window.pageYOffset;
     const introVideoTop = document.getElementById('intro-video-section').getBoundingClientRect().top + window.scrollY;
@@ -625,7 +630,6 @@
     let currentIdx = 0;
     for (let i = 0; i < sections.length; i++) {
       const sec = document.getElementById(sections[i].id);
-      // 마지막 섹션은 화면 하단까지 도달 시 active
       if (i === sections.length - 1) {
         const secRect = sec.getBoundingClientRect();
         const winH = window.innerHeight || document.documentElement.clientHeight;
@@ -640,14 +644,32 @@
         }
       }
     }
+    // 클릭으로 고정된 메뉴가 있으면 그 인덱스를 우선 active 처리
+    const activeIdx = (manualActiveIdx !== null) ? manualActiveIdx : currentIdx;
     sections.forEach((s, idx) => {
       const menu = document.getElementById(s.menu);
-      if (idx === currentIdx) menu.classList.add('active');
+      if (idx === activeIdx) menu.classList.add('active');
       else menu.classList.remove('active');
     });
   }
   window.addEventListener('scroll', onScrollFloatingMenu);
   window.addEventListener('DOMContentLoaded', onScrollFloatingMenu);
+
+  // 클릭 시 active 고정
+  sections.forEach((s, idx) => {
+    const menu = document.getElementById(s.menu);
+    menu.addEventListener('click', function(e) {
+      manualActiveIdx = idx;
+      onScrollFloatingMenu();
+      // 부드러운 스크롤
+      const target = document.getElementById(s.id);
+      if(target){
+        window.scrollTo({top: target.offsetTop - 80, behavior: 'smooth'});
+      }
+      // 일정 시간 후 스크롤 위치에 따라 자동 active로 복귀
+      setTimeout(() => { manualActiveIdx = null; onScrollFloatingMenu(); }, 1200);
+    });
+  });
   
   // 영상 재생 함수
   function playVideo() {
