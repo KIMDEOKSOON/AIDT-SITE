@@ -938,24 +938,79 @@
         let currentSlide = 0;
         // 슬라이드 크기 고정값
         const SLIDE_WIDTH = 340; // px
+        const SLIDE_GAP = 32; // px
         function goToSlide(idx) {
           currentSlide = idx;
-          slideTrack.style.transform = `translateX(-${idx * SLIDE_WIDTH}px)`;
+          const wrapper = document.getElementById('ai-slide-wrapper');
+          const wrapperWidth = wrapper.offsetWidth;
+          const offset = idx * (SLIDE_WIDTH + SLIDE_GAP) - (wrapperWidth - SLIDE_WIDTH) / 2;
+          slideTrack.style.transform = `translateX(-${offset}px)`;
           Array.from(dotsContainer.children).forEach((d,i)=>{
             d.classList.toggle('active',i===idx);
             d.style.background = i===idx ? '#2196f3' : '#888';
           });
         }
         // 트랙 너비 고정
-        slideTrack.style.width = `${slideCount * SLIDE_WIDTH + (slideCount-1)*32}px`;
-        // 도트 자동 생성
+        slideTrack.style.width = `${slideCount * SLIDE_WIDTH + (slideCount-1)*SLIDE_GAP}px`;
+        // 도트 자동 생성 (크기 확대)
         for(let i=0;i<slideCount;i++){
           const dot = document.createElement('button');
           dot.className = 'ai-slide-dot'+(i===0?' active':'');
-          dot.style.cssText = 'width:10px; height:10px; border-radius:50%; background:'+(i===0?'#2196f3':'#888')+'; border:none; cursor:pointer;';
+          dot.style.cssText = 'width:20px; height:20px; border-radius:50%; background:'+(i===0?'#2196f3':'#bbb')+'; border:2.5px solid #7b6eea; box-shadow:0 2px 8px #7b6eea22; cursor:pointer; transition:background 0.2s, border 0.2s;';
           dot.addEventListener('click',()=>goToSlide(i));
           dotsContainer.appendChild(dot);
         }
+        // 마우스 드래그로 슬라이드 이동
+        let isDragging = false, startX = 0, currentX = 0, dragStartSlide = 0;
+        slideTrack.addEventListener('mousedown', e => {
+          isDragging = true;
+          startX = e.pageX;
+          dragStartSlide = currentSlide;
+          slideTrack.style.transition = 'none';
+        });
+        document.addEventListener('mousemove', e => {
+          if(!isDragging) return;
+          currentX = e.pageX;
+          const wrapper = document.getElementById('ai-slide-wrapper');
+          const wrapperWidth = wrapper.offsetWidth;
+          const offset = dragStartSlide * (SLIDE_WIDTH + SLIDE_GAP) - (wrapperWidth - SLIDE_WIDTH) / 2;
+          const dx = currentX - startX;
+          slideTrack.style.transform = `translateX(-${offset - dx}px)`;
+        });
+        document.addEventListener('mouseup', e => {
+          if(!isDragging) return;
+          isDragging = false;
+          const dx = e.pageX - startX;
+          let newIdx = dragStartSlide - Math.round(dx / (SLIDE_WIDTH + SLIDE_GAP));
+          newIdx = Math.max(0, Math.min(slideCount-1, newIdx));
+          goToSlide(newIdx);
+          slideTrack.style.transition = 'transform 0.5s';
+        });
+        // 터치(모바일) 지원
+        slideTrack.addEventListener('touchstart', e => {
+          isDragging = true;
+          startX = e.touches[0].pageX;
+          dragStartSlide = currentSlide;
+          slideTrack.style.transition = 'none';
+        });
+        document.addEventListener('touchmove', e => {
+          if(!isDragging) return;
+          currentX = e.touches[0].pageX;
+          const wrapper = document.getElementById('ai-slide-wrapper');
+          const wrapperWidth = wrapper.offsetWidth;
+          const offset = dragStartSlide * (SLIDE_WIDTH + SLIDE_GAP) - (wrapperWidth - SLIDE_WIDTH) / 2;
+          const dx = currentX - startX;
+          slideTrack.style.transform = `translateX(-${offset - dx}px)`;
+        });
+        document.addEventListener('touchend', e => {
+          if(!isDragging) return;
+          isDragging = false;
+          const dx = currentX - startX;
+          let newIdx = dragStartSlide - Math.round(dx / (SLIDE_WIDTH + SLIDE_GAP));
+          newIdx = Math.max(0, Math.min(slideCount-1, newIdx));
+          goToSlide(newIdx);
+          slideTrack.style.transition = 'transform 0.5s';
+        });
         // 카드 hover 시 보러가기 버튼 노출
         document.querySelectorAll('.ai-slide').forEach((card)=>{
           card.addEventListener('mouseenter',()=>{
@@ -1037,6 +1092,14 @@
         // 상세 설명 인라인 표시 함수
         let currentAIDetailIdx = null;
         function showAIDetailInline(idx) {
+          let titleDiv = document.getElementById('ai-detail-title');
+          if(!titleDiv) {
+            titleDiv = document.createElement('div');
+            titleDiv.id = 'ai-detail-title';
+            titleDiv.style.cssText = 'max-width:1100px; margin:0 auto; text-align:center; font-size:2.2rem; font-weight:900; color:#7b6eea; letter-spacing:-1px; display:block !important; line-height:1.2;';
+            const wrapper = document.getElementById('ai-slide-wrapper');
+            wrapper.parentNode.insertBefore(titleDiv, wrapper.nextSibling);
+          }
           const d = aiDetails[idx];
           const inline = document.getElementById('ai-detail-inline');
           currentAIDetailIdx = idx;
@@ -1049,9 +1112,12 @@
           if(idx < aiDetails.length-1) {
             rightBtn = `<button id='ai-detail-next' style="position:absolute; right:-40px; top:50%; transform:translateY(-50%); background:#fff; border:2px solid #7b6eea; color:#7b6eea; border-radius:50%; width:48px; height:48px; font-size:2rem; font-weight:900; box-shadow:0 2px 12px #0001; cursor:pointer; z-index:2; transition:background 0.2s; display:flex; align-items:center; justify-content:center; line-height:48px; padding:0;"><span style='display:inline-block;'>&#8594;</span></button>`;
           }
+          // 제목은 박스 바깥 위쪽에 표시
+          titleDiv.innerHTML = d.title;
+          titleDiv.style.display = 'block';
+          // 박스 안에는 제목 제외
           inline.innerHTML = `
             ${leftBtn}
-            <div style=\"font-size:2.1rem; font-weight:900; margin-bottom:32px; color:#7b6eea; letter-spacing:-1px;\">${d.title}</div>
             <div style=\"margin-bottom:32px;\"><img src=\"${d.img}\" alt=\"\" style=\"width:104px; height:104px;\"></div>
             <div style=\"font-size:1.25rem; color:#222; margin-bottom:22px; white-space:pre-line; line-height:1.8; font-weight:500;\">${d.desc}</div>
             <div style=\"font-size:1.08rem; color:#1ec9a8; margin-top:18px; font-weight:700;\">${d.extra}</div>
@@ -1070,8 +1136,13 @@
         // 페이지 진입 시 첫 번째 상세(심층 지식 추적) 자동 표시 제거 (초기에는 상세 설명이 보이지 않음)
         document.addEventListener('DOMContentLoaded', function() {
           const inline = document.getElementById('ai-detail-inline');
+          const titleDiv = document.getElementById('ai-detail-title');
           inline.style.display = 'none';
           inline.innerHTML = '';
+          if(titleDiv) {
+            titleDiv.style.display = 'none';
+            titleDiv.innerHTML = '';
+          }
         });
         // 모달 닫기
         function closeDetailModal(){
@@ -1095,8 +1166,10 @@
     </div>
   </section>
 
+  <!-- 상세 설명 인라인 제목 영역 (박스 바깥 위쪽, ai-slide-wrapper 바로 아래) -->
+  <div id="ai-detail-title" style="max-width:1100px; margin:0 auto; text-align:center; font-size:2.2rem; font-weight:900; color:#7b6eea; letter-spacing:-1px; display:none !important; line-height:1.2;"></div>
   <!-- 상세 설명 인라인 표시 영역 (슬라이드 위) -->
-  <div id="ai-detail-inline" style="max-width:1100px; min-height:600px; margin:56px auto 48px auto; padding:64px 48px; background:#f8fafc; border-radius:36px; color:#222; font-size:1.25rem; display:none; box-shadow:0 8px 48px #0001; transition:all 0.3s; text-align:center; border:1.5px solid #e3e8ee; width:90vw; position:relative;"></div>
+  <div id="ai-detail-inline" style="max-width:1100px; min-height:600px; margin:16px auto 48px auto; padding:64px 48px; background:#f8fafc; border-radius:36px; color:#222; font-size:1.25rem; display:none; box-shadow:0 8px 48px #0001; transition:all 0.3s; text-align:center; border:1.5px solid #e3e8ee; width:90vw; position:relative;"></div>
   <div style="max-width:1100px; margin:0 auto 56px auto; border-bottom:2px solid #e3e8ee;"></div>
 
   <!-- 과목별 체험 섹션 -->
