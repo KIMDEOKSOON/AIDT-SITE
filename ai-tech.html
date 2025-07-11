@@ -32,10 +32,10 @@
       box-sizing: border-box;
     }
 
-    body { 
-      margin: 0; 
-      font-family: 'Noto Sans KR', sans-serif; 
-      background: var(--bg-primary);
+    body {
+      margin:0;
+      font-family:'Noto Sans KR',sans-serif;
+      background: linear-gradient(90deg,#13b6ed 0%,#1ec9a8 100%);
       line-height: 1.6;
       color: var(--text-secondary);
       overflow-x: hidden;
@@ -1121,9 +1121,9 @@
           // 박스 안에는 제목 제외
           inline.innerHTML = `
             ${leftBtn}
-            <div style=\"margin-bottom:32px;\"><img src=\"${d.img}\" alt=\"\" style=\"width:104px; height:104px;\"></div>
-            <div style=\"font-size:1.25rem; color:#222; margin-bottom:22px; white-space:pre-line; line-height:1.8; font-weight:500;\">${d.desc}</div>
-            <div style=\"font-size:1.08rem; color:#1ec9a8; margin-top:18px; font-weight:700;\">${d.extra}</div>
+            <div style=\"margin-bottom:32px; text-align:center;\"><img src=\"${d.img}\" alt=\"\" style=\"width:104px; height:104px;\"></div>
+            <div style=\"font-size:1.25rem; color:#222; margin-bottom:22px; white-space:pre-line; line-height:1.8; font-weight:500; text-align:center;\">${d.desc}</div>
+            <div style=\"font-size:1.08rem; color:#1ec9a8; margin-top:18px; font-weight:700; text-align:center;\">${d.extra}</div>
             ${rightBtn}
           `;
           inline.style.display = 'block';
@@ -1172,13 +1172,17 @@
   <!-- 상세 설명 인라인 제목 영역 (박스 바깥 위쪽, ai-slide-wrapper 바로 아래) -->
   <div id="ai-detail-title" style="max-width:1100px; margin:0 auto; text-align:center; font-size:2.2rem; font-weight:900; color:#7b6eea; letter-spacing:-1px; display:none !important; line-height:1.2;"></div>
   <!-- 상세 설명 인라인 표시 영역 (슬라이드 위) -->
-  <div id="ai-detail-inline" style="max-width:1100px; min-height:600px; margin:16px auto 48px auto; padding:64px 48px; background:#f8fafc; border-radius:36px; color:#222; font-size:1.25rem; display:none; box-shadow:0 8px 48px #0001; transition:all 0.3s; text-align:center; border:1.5px solid #e3e8ee; width:90vw; position:relative;"></div>
+  <div id="ai-detail-inline" style="max-width:1100px; min-height:600px; margin:16px auto 48px auto; padding:64px 0; background:#f8fafc; border-radius:36px; display:none; box-shadow:0 8px 32px rgba(30,201,255,0.10); position:relative;">
+    <div style="background:#fff; border-radius:32px; box-shadow:0 4px 24px rgba(30,201,255,0.10); max-width:900px; margin:0 auto; padding:56px 48px; color:#222; font-size:1.25rem;">
+      <!-- 기존 상세 설명 내용이 이 내부에 들어가도록 JS에서 innerHTML로 삽입됨 -->
+    </div>
+  </div>
   <div style="max-width:1100px; margin:0 auto 56px auto; border-bottom:2px solid #e3e8ee;"></div>
 
   <!-- 과목별 체험 섹션 -->
   <section style="background: linear-gradient(135deg, #7b6eea 0%, #1ec9a8 100%); padding: 60px 0;">
     <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px; text-align: center;">
-      <h2 style="font-size:2.2rem; color:#2d3a8c; font-weight:bold; margin-bottom:32px; text-align:center;">체험하기</h2>
+      <h2 style="font-size:2.2rem; color:#fff; font-weight:bold; margin-bottom:32px; text-align:center;">체험하기</h2>
       <p style="font-size: 1.15rem; color: rgba(255,255,255,0.9); margin-bottom: 48px; line-height: 1.6;">
         직접 조작해 보며 활동하는 AI 기반 학습과 개인 맞춤형 교육으로<br>
         <strong style="color: #fff;">학생들의 눈높이에 맞춘 디지털교과서</strong>
