@@ -159,21 +159,21 @@
       }
       .rolling-item img { width: 36px; height: 36px; margin-top: 12px; margin-bottom: 8px; }
     }
-    /* 플로팅 사이드 메뉴 */
+    /* 플로팅 사이드 메뉴 - 글래스모피즘 스타일 */
     .floating-menu {
       position: fixed;
-      top: 120px;
-      left: 32px;
+      top: 80px;
+      left: 16px;
       z-index: 200;
-      background: rgba(255,255,255,0.18);
-      border-radius: 22px;
-      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
-      padding: 32px 28px;
-      width: 260px;
-      backdrop-filter: blur(16px);
+      background: rgba(255,255,255,0.85);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(30,41,80,0.12);
+      padding: 32px 0 32px 0;
+      width: 280px;
       border: 1.5px solid rgba(255,255,255,0.25);
-      transition: background 0.2s, box-shadow 0.2s, opacity 0.2s;
+      transition: box-shadow 0.2s, opacity 0.2s;
       opacity: 1;
+      backdrop-filter: blur(16px);
     }
     .floating-menu.hide {
       opacity: 0;
@@ -185,62 +185,38 @@
       padding: 0;
       position: relative;
     }
-    .timeline-menu::before {
-      content: "";
-      position: absolute;
-      left: 24px;
-      top: 0;
-      bottom: 0;
-      width: 2.5px;
-      background: #c6e4ea;
-      z-index: 0;
-    }
+    /* 세로줄 제거 */
+    .timeline-menu::before { display: none !important; }
     .timeline-menu li {
       position: relative;
       min-height: 48px;
-      display: flex;
-      align-items: center;
-      margin-bottom: 18px;
+      margin: 0;
       padding: 0;
-    }
-    .timeline-menu li:last-child {
-      margin-bottom: 0;
-    }
-    .timeline-menu li::before {
-      content: "";
-      position: absolute;
-      left: 17px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 14px;
-      height: 14px;
-      background: #c6e4ea;
-      border-radius: 50%;
-      z-index: 1;
-      border: 2.5px solid #e0f7fa;
     }
     .timeline-menu a {
       display: block;
-      margin-left: 44px;
-      padding: 12px 28px;
-      font-size: 1.08rem;
-      font-weight: 600;
-      color: #333;
-      border-radius: 999px;
+      padding: 16px 32px 16px 28px;
+      color: #222;
+      font-size: 1.13rem;
+      font-weight: 500;
       text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-      position: relative;
-      z-index: 2;
-      background: none;
-      box-shadow: none;
+      border-radius: 999px;
+      transition: background 0.18s, color 0.18s;
+      margin-bottom: 2px;
       white-space: nowrap;
     }
-    .timeline-menu a.active, .timeline-menu a:hover {
+    .timeline-menu a:hover {
+      background: rgba(30,144,255,0.08);
+      color: #1e90ff;
+    }
+    .timeline-menu a.active {
       background: linear-gradient(90deg, #1ec9ff 0%, #3be6c6 100%);
       color: #fff;
+      font-weight: 700;
       box-shadow: 0 2px 8px rgba(30,201,255,0.10);
     }
-    @media (max-width: 1100px) {
+    .timeline-menu li:last-child a { margin-bottom: 0; }
+    @media (max-width: 900px) {
       .floating-menu { display: none; }
     }
     .gnb-dropdown {
@@ -328,7 +304,7 @@
       <li><a href="#expo-section" id="menu-expo">박람회 및 전시 현장</a></li>
       <li><a href="#school-section" id="menu-school">실제 학교 현장에서의 활용</a></li>
       <li><a href="#interview-section" id="menu-interview">선생님의 생생한 인터뷰</a></li>
-      <li><a href="#result-section" id="menu-result">1위 교과서와 AI 기술의 만남</a></li>
+      <li><a href="#result-section" id="menu-result">1위 교과서와 AI의 만남</a></li>
     </ul>
   </nav>
 
