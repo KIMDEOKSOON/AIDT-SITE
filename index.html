@@ -317,7 +317,6 @@
         <a href="web-expo.html" class="dropdown-toggle" tabindex="-1">웹전시관</a>
       </div>
       <a href="contact.html">문의하기</a>
-      <a href="teacher-training.html">교원 연수</a>
     </div>
   </nav>
 
@@ -573,6 +572,8 @@
     </div>
   </div>
 
+  <!-- 맨 위로 올라가는 화살표 버튼 -->
+  <button id="scrollToTopBtn" style="position:fixed; bottom:48px; right:48px; z-index:9999; width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,0.95); border:2.5px solid #7b6eea; box-shadow:0 4px 24px #0001; color:#7b6eea; font-size:2.5rem; display:none; align-items:center; justify-content:center; cursor:pointer; transition:background 0.2s, box-shadow 0.2s;"><span style='display:inline-block; transform:translateY(2px);'>&uarr;</span></button>
   <script>
   // 플로팅 메뉴 show/hide & active 섹션 강조
   const floatingMenu = document.getElementById('floatingMenu');
@@ -705,6 +706,19 @@
       }, 350);
     }
   });
+
+  // 맨 위로 올라가는 버튼 동작
+  const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+  window.addEventListener('scroll', function() {
+    if(window.scrollY > 300) {
+      scrollToTopBtn.style.display = 'flex';
+    } else {
+      scrollToTopBtn.style.display = 'none';
+    }
+  });
+  scrollToTopBtn.onclick = function() {
+    window.scrollTo({top:0, behavior:'smooth'});
+  };
   </script>
   
   <!-- 푸터 -->
@@ -794,9 +808,5 @@
       }
     }
   </style>
-
-  <button class="floating-apply-btn" onclick="location.href='teacher-training.html'">
-    맞춤 교원 연수 신청하세요!
-  </button>
 </body>
 </html> 

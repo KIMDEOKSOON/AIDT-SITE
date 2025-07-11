@@ -622,7 +622,6 @@
         <a href="web-expo.html" class="dropdown-toggle" tabindex="-1" style="color:#7b6eea;font-weight:700;">웹전시관</a>
       </div>
       <a href="contact.html">문의하기</a>
-      <a href="teacher-training.html">교원 연수</a>
     </div>
   </nav>
   <!-- 플로팅 사이드 메뉴 (index.html 방식) -->
@@ -843,9 +842,8 @@
   </div>
   <!-- 맨 위로 버튼 -->
   <button id="scrollTopBtn" title="맨 위로">↑</button>
-  <button class="floating-apply-btn" onclick="location.href='teacher-training.html'">
-    맞춤 교원 연수 신청하세요!
-  </button>
+  <!-- 맨 위로 올라가는 화살표 버튼 -->
+  <button id="scrollToTopBtn" style="position:fixed; bottom:48px; right:48px; z-index:9999; width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,0.95); border:2.5px solid #7b6eea; box-shadow:0 4px 24px #0001; color:#7b6eea; font-size:2.5rem; display:none; align-items:center; justify-content:center; cursor:pointer; transition:background 0.2s, box-shadow 0.2s;"><span style='display:inline-block; transform:translateY(2px);'>&uarr;</span></button>
   <script>
     // 네비게이션 클릭 시 부드러운 스크롤 + active 고정
     let manualActiveIdx = null;
@@ -896,6 +894,19 @@
     }
     window.addEventListener('scroll', onScrollFloatingMenu);
     window.addEventListener('DOMContentLoaded', onScrollFloatingMenu);
+
+    // 맨 위로 올라가는 버튼 동작
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    window.addEventListener('scroll', function() {
+      if(window.scrollY > 300) {
+        scrollToTopBtn.style.display = 'flex';
+      } else {
+        scrollToTopBtn.style.display = 'none';
+      }
+    });
+    scrollToTopBtn.onclick = function() {
+      window.scrollTo({top:0, behavior:'smooth'});
+    };
   </script>
 
   <!-- 체험하기 섹션 -->

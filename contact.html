@@ -315,7 +315,6 @@
         <a href="web-expo.html" class="dropdown-toggle" tabindex="-1">웹전시관</a>
       </div>
       <a href="contact.html" style="color:#7b6eea;font-weight:700;">문의하기</a>
-      <a href="teacher-training.html">교원 연수</a>
     </div>
   </nav>
   <main class="support-main">
@@ -412,10 +411,14 @@
         </script>
       </section>
       <section class="support-tab-panel" data-tab="inquiry" style="display:none; background:#fff; border-radius:0 0 18px 18px; box-shadow:0 4px 20px rgba(30,201,255,0.12); padding:48px 40px 40px 40px; border-top:3px solid #1ec9a8;">
-        <h3 style="color:#2d3a8c; font-size:1.4rem; font-weight:bold; margin-bottom:32px; text-align:center; position:relative;">
+        <h3 style="color:#2d3a8c; font-size:1.4rem; font-weight:bold; margin-bottom:16px; text-align:center; position:relative;">
           <span style="background:#1ec9a8; color:#fff; padding:8px 16px; border-radius:20px; font-size:1.1rem; margin-right:12px;">💡</span>
           건의하기
         </h3>
+        <p style="color:#666; font-size:1.05rem; text-align:center; margin-bottom:32px; line-height:1.6;">
+          아이스크림 AIDT에 바라는 점이 있으신가요?<br>
+          여러분의 소중한 의견에 아이스크림 AIDT가 변화합니다.
+        </p>
         <form style="max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:18px;">
           <input type="text" placeholder="이름" required style="padding:14px 12px; border-radius:8px; border:1.2px solid #e0e0e0; font-size:1.05rem; font-family:'Noto Sans KR',sans-serif;">
           <input type="email" placeholder="이메일" required style="padding:14px 12px; border-radius:8px; border:1.2px solid #e0e0e0; font-size:1.05rem; font-family:'Noto Sans KR',sans-serif;">
@@ -451,13 +454,6 @@
           </div>
         </div>
       </section>
-    </div>
-    <div class="remote-banner fade-in">
-      <div class="remote-content">
-        <div class="remote-title">원격지원/컨설팅이 필요하신가요?</div>
-        <div class="remote-desc">1:1 맞춤 컨설팅, 원격지원 등 다양한 지원 서비스를 제공합니다.</div>
-        <a href="teacher-training.html" class="remote-btn">맞춤 교원 연수 신청</a>
-      </div>
     </div>
   </main>
 
@@ -622,9 +618,22 @@
     }
   </style>
 
-  <button class="floating-apply-btn" onclick="location.href='teacher-training.html'">
-    맞춤 교원 연수 신청하세요!
-  </button>
+  <!-- 맨 위로 올라가는 화살표 버튼 -->
+  <button id="scrollToTopBtn" style="position:fixed; bottom:48px; right:48px; z-index:9999; width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,0.95); border:2.5px solid #7b6eea; box-shadow:0 4px 24px #0001; color:#7b6eea; font-size:2.5rem; display:none; align-items:center; justify-content:center; cursor:pointer; transition:background 0.2s, box-shadow 0.2s;"><span style='display:inline-block; transform:translateY(2px);'>&uarr;</span></button>
+  <script>
+    // 맨 위로 올라가는 버튼 동작
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    window.addEventListener('scroll', function() {
+      if(window.scrollY > 300) {
+        scrollToTopBtn.style.display = 'flex';
+      } else {
+        scrollToTopBtn.style.display = 'none';
+      }
+    });
+    scrollToTopBtn.onclick = function() {
+      window.scrollTo({top:0, behavior:'smooth'});
+    };
+  </script>
 
 </body>
 </html> 
