@@ -42,7 +42,7 @@
     .gnb-center a:hover {
       color: #1e90ff;
     }
-    .expo-title { font-size:3.5rem; color:#7b6eea; font-weight:900; text-align:center; letter-spacing:-1px; margin-bottom:38px; }
+    .expo-title { font-size:2.8rem; color:#7b6eea; font-weight:900; text-align:center; letter-spacing:-1px; margin-bottom:38px; }
     .expo-tab-nav { display:flex; justify-content:center; gap:48px; border-bottom:1.5px solid #e5e7eb; margin-bottom:38px; }
     .expo-tab-btn { font-size:1.35rem; font-weight:800; border:none; border-radius:8px; padding:18px 36px 14px 36px; cursor:pointer; transition:background 0.2s; letter-spacing:-0.5px; background:none; }
     .expo-tab-btn.active { color:#fff; background:#7b6eea; }
@@ -658,7 +658,8 @@
   <!-- 웹전시관 타이틀+카드 일반 div로 복구 -->
   <div class="expo-sticky-wrap" style="background:#f8f9fa;box-shadow:0 2px 8px rgba(0,0,0,0.04);padding-top:12px;">
     <div class="expo-title">전시관 둘러보기</div>
-    <div style="max-width:1200px; margin:32px auto 60px auto;">
+    
+  
       <!-- 탭 네비게이션 -->
       <nav class="expo-tab-nav">
         <button id="tab-english" class="expo-tab-btn active">영어</button>
@@ -669,94 +670,126 @@
         <div class="expo-carousel-track" id="eng-track">
           <div class="expo-carousel-card">
             <div class="expo-carousel-img-wrap">
-              <div class="ai-tag-img">AI</div>
-              <img src="english 3.png" alt="영어 3학년" class="expo-carousel-img" />
+              <div style="position:relative; display:inline-block;">
+                <img src="english 3.png" alt="영어 3학년" class="expo-carousel-img" />
+                <div class="ai-tag-img" style="position:absolute; top:0; left:0; transform:none; border-radius:0 0 16px 0;">AI</div>
+              </div>
             </div>
             <div class="expo-card-title">영어 3학년</div>
           </div>
           <div class="expo-carousel-card">
             <div class="expo-carousel-img-wrap">
-              <div class="ai-tag-img">AI</div>
-              <img src="english 4.png" alt="영어 4학년" class="expo-carousel-img" />
+              <div style="position:relative; display:inline-block;">
+                <img src="english 4.png" alt="영어 4학년" class="expo-carousel-img" />
+                <div class="ai-tag-img" style="position:absolute; top:0; left:0; transform:none; border-radius:0 0 16px 0;">AI</div>
+              </div>
             </div>
             <div class="expo-card-title">영어 4학년</div>
           </div>
           <div class="expo-carousel-card">
             <div class="expo-carousel-img-wrap">
-              <div class="ai-tag-img">AI</div>
-              <img src="english 5.jpg" alt="영어 5학년" class="expo-carousel-img" />
+              <div style="position:relative; display:inline-block;">
+                <img src="english 5.jpg" alt="영어 5학년" class="expo-carousel-img" />
+                <div class="ai-tag-img" style="position:absolute; top:0; left:0; transform:none; border-radius:0 0 16px 0;">AI</div>
+              </div>
             </div>
             <div class="expo-card-title">영어 5학년</div>
           </div>
           <div class="expo-carousel-card">
             <div class="expo-carousel-img-wrap">
-              <div class="ai-tag-img">AI</div>
-              <img src="english 6.jpg" alt="영어 6학년" class="expo-carousel-img" />
+              <div style="position:relative; display:inline-block;">
+                <img src="english 6.jpg" alt="영어 6학년" class="expo-carousel-img" />
+                <div class="ai-tag-img" style="position:absolute; top:0; left:0; transform:none; border-radius:0 0 16px 0;">AI</div>
+              </div>
             </div>
             <div class="expo-card-title">영어 6학년</div>
           </div>
         </div>
       </div>
       <!-- 수학 캐러셀 -->
-      <div id="expo-math-carousel" class="expo-carousel-wrap" style="display:none;">
+      <div id="expo-math-carousel" class="expo-carousel-wrap" style="display:none; position:relative;">
+        <!-- 왼쪽 화살표 -->
+        <button id="math-carousel-prev" style="position:absolute; left:0; top:50%; transform:translateY(-50%); z-index:10; width:48px; height:48px; border-radius:50%; background:#1e90ff; box-shadow:0 2px 8px #0002; border:none; display:flex; align-items:center; justify-content:center; font-size:2rem; color:#fff; cursor:pointer; transition:background 0.18s, box-shadow 0.18s;">
+          &#60;
+        </button>
         <div class="expo-carousel-track" id="math-track">
           <div class="expo-carousel-card">
             <div class="expo-carousel-img-wrap">
-              <div class="ai-tag-img">AI</div>
-              <img src="math 3-1.jpg" alt="수학 3-1" class="expo-carousel-img" />
+              <div style="position:relative; display:inline-block;">
+                <img src="math 3-1.jpg" alt="수학 3-1" class="expo-carousel-img" />
+                <div class="ai-tag-img" style="position:absolute; top:0; left:0; transform:none; border-radius:0 0 16px 0;">AI</div>
+              </div>
             </div>
             <div class="expo-card-title">수학 3-1</div>
           </div>
           <div class="expo-carousel-card">
             <div class="expo-carousel-img-wrap">
-              <div class="ai-tag-img">AI</div>
-              <img src="math 3-2.jpg" alt="수학 3-2" class="expo-carousel-img" />
+              <div style="position:relative; display:inline-block;">
+                <img src="math 3-2.jpg" alt="수학 3-2" class="expo-carousel-img" />
+                <div class="ai-tag-img" style="position:absolute; top:0; left:0; transform:none; border-radius:0 0 16px 0;">AI</div>
+              </div>
             </div>
             <div class="expo-card-title">수학 3-2</div>
           </div>
           <div class="expo-carousel-card">
             <div class="expo-carousel-img-wrap">
-              <div class="ai-tag-img">AI</div>
-              <img src="math 4-1.jpg" alt="수학 4-1" class="expo-carousel-img" />
+              <div style="position:relative; display:inline-block;">
+                <img src="math 4-1.jpg" alt="수학 4-1" class="expo-carousel-img" />
+                <div class="ai-tag-img" style="position:absolute; top:0; left:0; transform:none; border-radius:0 0 16px 0;">AI</div>
+              </div>
             </div>
             <div class="expo-card-title">수학 4-1</div>
           </div>
           <div class="expo-carousel-card">
             <div class="expo-carousel-img-wrap">
-              <div class="ai-tag-img">AI</div>
-              <img src="math 4-2.jpg" alt="수학 4-2" class="expo-carousel-img" />
+              <div style="position:relative; display:inline-block;">
+                <img src="math 4-2.jpg" alt="수학 4-2" class="expo-carousel-img" />
+                <div class="ai-tag-img" style="position:absolute; top:0; left:0; transform:none; border-radius:0 0 16px 0;">AI</div>
+              </div>
             </div>
             <div class="expo-card-title">수학 4-2</div>
           </div>
           <div class="expo-carousel-card">
             <div class="expo-carousel-img-wrap">
-              <div class="ai-tag-img">AI</div>
-              <img src="math 5-1.jpg" alt="수학 5-1" class="expo-carousel-img" />
+              <div style="position:relative; display:inline-block;">
+                <img src="math 5-1.jpg" alt="수학 5-1" class="expo-carousel-img" />
+                <div class="ai-tag-img" style="position:absolute; top:0; left:0; transform:none; border-radius:0 0 16px 0;">AI</div>
+              </div>
             </div>
             <div class="expo-card-title">수학 5-1</div>
           </div>
           <div class="expo-carousel-card">
             <div class="expo-carousel-img-wrap">
-              <div class="ai-tag-img">AI</div>
-              <img src="math 5-2.jpg" alt="수학 5-2" class="expo-carousel-img" />
+              <div style="position:relative; display:inline-block;">
+                <img src="math 5-2.jpg" alt="수학 5-2" class="expo-carousel-img" />
+                <div class="ai-tag-img" style="position:absolute; top:0; left:0; transform:none; border-radius:0 0 16px 0;">AI</div>
+              </div>
             </div>
             <div class="expo-card-title">수학 5-2</div>
           </div>
           <div class="expo-carousel-card">
             <div class="expo-carousel-img-wrap">
-              <div class="ai-tag-img">AI</div>
-              <img src="math 6-1.jpg" alt="수학 6-1" class="expo-carousel-img" />
+              <div style="position:relative; display:inline-block;">
+                <img src="math 6-1.jpg" alt="수학 6-1" class="expo-carousel-img" />
+                <div class="ai-tag-img" style="position:absolute; top:0; left:0; transform:none; border-radius:0 0 16px 0;">AI</div>
+              </div>
             </div>
             <div class="expo-card-title">수학 6-1</div>
           </div>
           <div class="expo-carousel-card">
             <div class="expo-carousel-img-wrap">
-              <div class="ai-tag-img">AI</div>
-              <img src="math 6-2.jpg" alt="수학 6-2" class="expo-carousel-img" />
+              <div style="position:relative; display:inline-block;">
+                <img src="math 6-2.jpg" alt="수학 6-2" class="expo-carousel-img" />
+                <div class="ai-tag-img" style="position:absolute; top:0; left:0; transform:none; border-radius:0 0 16px 0;">AI</div>
+              </div>
             </div>
             <div class="expo-card-title">수학 6-2</div>
           </div>
         </div>
+        <!-- 오른쪽 화살표 -->
+        <button id="math-carousel-next" style="position:absolute; right:0; top:50%; transform:translateY(-50%); z-index:10; width:48px; height:48px; border-radius:50%; background:#1e90ff; box-shadow:0 2px 8px #0002; border:none; display:flex; align-items:center; justify-content:center; font-size:2rem; color:#fff; cursor:pointer; transition:background 0.18s, box-shadow 0.18s;">
+          &#62;
+        </button>
       </div>
       <script>
         // 탭 전환
@@ -777,7 +810,7 @@
           mathCarousel.style.display = '';
         };
         // 캐러셀 동작(드래그/스와이프)
-        function makeCarousel(trackId, cardCount) {
+        function makeCarousel(trackId, cardCount, prevBtnId, nextBtnId) {
           const track = document.getElementById(trackId);
           const cards = Array.from(track.children);
           let idx = 0;
@@ -798,6 +831,9 @@
               else if(i === idx-1) card.classList.add('prev');
               else if(i === idx+1) card.classList.add('next');
             });
+            // 버튼 활성/비활성
+            if(prevBtnId) document.getElementById(prevBtnId).disabled = (idx === 0);
+            if(nextBtnId) document.getElementById(nextBtnId).disabled = (idx >= cardCount-getVisible());
           }
           let startX = 0, currentX = 0, dragging = false;
           track.addEventListener('mousedown', e => {
@@ -836,10 +872,12 @@
             update();
           });
           window.addEventListener('resize', update);
+          if(prevBtnId) document.getElementById(prevBtnId).onclick = function(){ if(idx>0){ idx--; update(); } };
+          if(nextBtnId) document.getElementById(nextBtnId).onclick = function(){ if(idx<cardCount-getVisible()){ idx++; update(); } };
           update();
         }
         makeCarousel('eng-track',4);
-        makeCarousel('math-track',8);
+        makeCarousel('math-track',8,'math-carousel-prev','math-carousel-next');
       </script>
     </div>
   </div>
