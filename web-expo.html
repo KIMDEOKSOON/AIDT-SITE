@@ -618,6 +618,28 @@
       .expo-carousel-card { flex:0 0 98vw; max-width:98vw; min-width:240px; }
       .expo-carousel-img-wrap { min-height:180px; }
     }
+    /* 네비게이션 active 스타일 개선 */
+    .timeline-menu a.active {
+      background: linear-gradient(90deg, #1ec9ff 0%, #3be6c6 100%);
+      color: #fff !important;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(30,201,255,0.10);
+      border-radius: 999px;
+      padding: 10px 28px;
+      transition: background 0.18s, color 0.18s;
+    }
+    #menu-math-3-4.active {
+      background: #f0f4ff !important;
+      color: #2563eb !important;
+      font-weight: 700;
+      box-shadow: 0 2px 8px #2563eb22;
+    }
+    #menu-english-3-4.active {
+      background: #e0fff7 !important;
+      color: #10b981 !important;
+      font-weight: 700;
+      box-shadow: 0 2px 8px #10b98122;
+    }
   </style>
 </head>
 <body>
@@ -631,17 +653,16 @@
       <a href="contact.html">문의하기</a>
     </div>
   </nav>
+  <!-- 체험하기 섹션: 맨 위로 이동 -->
+  <!-- 이 부분의 체험하기 섹션을 완전히 삭제 -->
   <!-- 플로팅 사이드 메뉴 (index.html 방식) -->
   <nav class="floating-menu hide" id="floatingMenu">
     <ul class="timeline-menu">
-      <li><a href="#math-3-4" id="menu-math-3-4">수학 3-4학년</a></li>
-      <li><a href="#math-5-6" id="menu-math-5-6">수학 5-6학년</a></li>
-      <li><a href="#english-3-4" id="menu-english-3-4">영어 3-4학년</a></li>
-      <li><a href="#english-5-6" id="menu-english-5-6">영어 5-6학년</a></li>
       <li><a href="#experience-section" id="menu-experience">체험하기</a></li>
+      <li><a href="#math-3-4" id="menu-math-3-4">수학 AIDT</a></li>
+      <li><a href="#english-3-4" id="menu-english-3-4">영어 AIDT</a></li>
     </ul>
   </nav>
-  <!-- 히어로 섹션 제거 -->
   <!-- 소개 섹션 추가 -->
   <section style="background: #fff; padding: 60px 0; margin: 0;">
     <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
@@ -652,6 +673,22 @@
           <span style="display:block; font-size:3.5rem; color:#7b6eea; font-weight:900; margin-top:18px;">AI 혁신 기술로 미래 교육을 선도합니다</span>
         </div>
       </div>
+      <!-- 체험하기 섹션: 제목과 전시관 둘러보기 사이에 위치 -->
+      <section id="experience-section" style="max-width: 700px; margin: 0 auto 60px auto;">
+        <div class="experience-card" style="background:#1a2656; border-radius:24px; box-shadow:0 8px 32px rgba(30,41,80,0.18); display:flex; flex-direction:column; align-items:center; padding:38px 36px; gap:28px; min-height:140px;">
+          <div style="font-size:1.7rem; font-weight:800; color:#fff; margin-bottom:8px; letter-spacing:-1px; text-align:center; width:100%;">체험하기</div>
+          <div style="display:flex; gap:24px; justify-content:center; width:100%; flex-wrap:wrap;">
+            <button class="experience-teacher-btn" style="display:flex; align-items:center; gap:14px; background:#1e90ff; color:#fff; border:none; border-radius:16px; padding:18px 36px; font-size:1.18rem; font-weight:700; box-shadow:0 2px 8px rgba(30,144,255,0.10); cursor:pointer; transition:background 0.18s;">
+              <span style="font-size:2rem;">👩‍🏫</span>
+              <span>선생님 화면</span>
+            </button>
+            <button class="experience-student-btn" style="display:flex; align-items:center; gap:14px; background:#43b97f; color:#fff; border:none; border-radius:16px; padding:18px 36px; font-size:1.18rem; font-weight:700; box-shadow:0 2px 8px rgba(67,185,127,0.10); cursor:pointer; transition:background 0.18s;">
+              <span style="font-size:2rem;">🧑‍🎓</span>
+              <span>학생 화면</span>
+            </button>
+          </div>
+        </div>
+      </section>
       
       
 
@@ -885,96 +922,53 @@
   <div id="math-detail" style="max-width:1400px;margin:0 auto 60px auto;">
     <section id="math-3-4" style="background:linear-gradient(135deg,#e0eaff 0%,#dbeafe 100%);border-radius:24px;padding:56px 0 48px 0;margin-bottom:48px;box-shadow:0 4px 24px rgba(37,99,235,0.10);">
       <div class="aidt-title-row">
-        <h2 style="font-size:2.3rem;color:#2563eb;font-weight:700;text-align:center;letter-spacing:-1px;">수학 3-4학년</h2>
+        <h2 style="font-size:2.3rem;color:#2563eb;font-weight:700;text-align:center;letter-spacing:-1px;">수학 AIDT</h2>
         <div class="aidt-title-btns">
           <a href="#" class="aidt-title-btn">교과서 목차(3학년)</a>
           <a href="#" class="aidt-title-btn">교과서 목차(4학년)</a>
           <a href="#" class="aidt-title-btn">선정사유서</a>
-    </div>
-  </div>
+        </div>
+      </div>
       <div class="aidt-feature-wrap math">
-        <div class="aidt-feature-title">AIDT 수학 3-4학년의 5가지 특징</div>
+        <div class="aidt-feature-title">AIDT 수학의 5가지 특징</div>
         <div class="aidt-feature-media">
           <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=480&q=80" alt="수학 3-4학년 샘플 이미지" />
           </div>
         <div class="aidt-feature-list">
           <div class="aidt-feature-card">
             <div class="aidt-feature-icon">🖥️</div>
-            <div class="aidt-feature-label">수준별 화면 구성</div>
-            <div class="aidt-feature-desc">학생별 맞춤 UI/UX로 몰입도 높은 수업 제공</div>
+            <div class="aidt-feature-label">편리한 UI/UX</div>
+            <div class="aidt-feature-desc">편리하고 직관적인 화면 구성</div>
         </div>
           <div class="aidt-feature-card">
             <div class="aidt-feature-icon">🎲</div>
-            <div class="aidt-feature-label">놀이기반 활동 지원</div>
-            <div class="aidt-feature-desc">게임·퀴즈 등 다양한 활동으로 재미있는 수학 수업</div>
+            <div class="aidt-feature-label">풍부한 수준별 자료</div>
+            <div class="aidt-feature-desc">다양한 난이도의 학습 자료 제공</div>
         </div>
           <div class="aidt-feature-card">
             <div class="aidt-feature-icon">🔗</div>
-            <div class="aidt-feature-label">다차원 상호작용</div>
-            <div class="aidt-feature-desc">학생·교사·AI가 함께하는 쌍방향 학습</div>
+            <div class="aidt-feature-label">재미있는 조작형 콘텐츠</div>
+            <div class="aidt-feature-desc">직접 참여하는 인터랙티브 콘텐츠</div>
       </div>
           <div class="aidt-feature-card">
             <div class="aidt-feature-icon">🤖</div>
-            <div class="aidt-feature-label">AI 보조교사</div>
-            <div class="aidt-feature-desc">AI가 실시간 피드백과 학습 지원</div>
+            <div class="aidt-feature-label">AI 보조교사, AI 튜터</div>
+            <div class="aidt-feature-desc">AI가 학습을 도와주는 보조교사/튜터 역할</div>
       </div>
           <div class="aidt-feature-card">
             <div class="aidt-feature-icon">📊</div>
             <div class="aidt-feature-label">분석 대시보드</div>
-            <div class="aidt-feature-desc">학습 데이터 기반 맞춤 분석 제공</div>
+            <div class="aidt-feature-desc">학습 결과를 한눈에 분석</div>
           </div>
         </div>
           </div>
-    </section>
-    <section id="math-5-6" style="background:linear-gradient(135deg,#dbeafe 0%,#bae6fd 100%);border-radius:24px;padding:56px 0 48px 0;margin-bottom:48px;box-shadow:0 4px 24px rgba(37,99,235,0.10);">
-      <div class="aidt-title-row">
-        <h2 style="font-size:2.3rem;color:#2563eb;font-weight:700;text-align:center;letter-spacing:-1px;">수학 5-6학년</h2>
-        <div class="aidt-title-btns">
-          <a href="#" class="aidt-title-btn">교과서 목차(5학년)</a>
-          <a href="#" class="aidt-title-btn">교과서 목차(6학년)</a>
-          <a href="#" class="aidt-title-btn">선정사유서</a>
-        </div>
-          </div>
-      <div class="aidt-feature-wrap math">
-        <div class="aidt-feature-title">AIDT 수학 5-6학년의 5가지 특징</div>
-        <div class="aidt-feature-media">
-          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=480&q=80" alt="수학 5-6학년 샘플 이미지" />
-        </div>
-        <div class="aidt-feature-list">
-          <div class="aidt-feature-card">
-            <div class="aidt-feature-icon">🖥️</div>
-            <div class="aidt-feature-label">수준별 화면 구성</div>
-            <div class="aidt-feature-desc">학생별 맞춤 UI/UX로 몰입도 높은 수업 제공</div>
-          </div>
-          <div class="aidt-feature-card">
-            <div class="aidt-feature-icon">🎲</div>
-            <div class="aidt-feature-label">놀이기반 활동 지원</div>
-            <div class="aidt-feature-desc">게임·퀴즈 등 다양한 활동으로 재미있는 수학 수업</div>
-        </div>
-          <div class="aidt-feature-card">
-            <div class="aidt-feature-icon">🔗</div>
-            <div class="aidt-feature-label">다차원 상호작용</div>
-            <div class="aidt-feature-desc">학생·교사·AI가 함께하는 쌍방향 학습</div>
-      </div>
-          <div class="aidt-feature-card">
-            <div class="aidt-feature-icon">🤖</div>
-            <div class="aidt-feature-label">AI 보조교사</div>
-            <div class="aidt-feature-desc">AI가 실시간 피드백과 학습 지원</div>
-          </div>
-          <div class="aidt-feature-card">
-            <div class="aidt-feature-icon">📊</div>
-            <div class="aidt-feature-label">분석 대시보드</div>
-            <div class="aidt-feature-desc">학습 데이터 기반 맞춤 분석 제공</div>
-          </div>
-        </div>
-      </div>
     </section>
           </div>
   <!-- 영어관 상세: 항상 보임 -->
   <div id="english-detail" style="max-width:1400px;margin:0 auto 60px auto;">
     <section id="english-3-4" style="background:linear-gradient(135deg,#d1fae5 0%,#bbf7d0 100%);border-radius:24px;padding:56px 0 48px 0;margin-bottom:48px;box-shadow:0 4px 24px rgba(16,185,129,0.10);">
       <div class="aidt-title-row">
-        <h2 style="font-size:2.3rem;color:#10b981;font-weight:700;text-align:center;letter-spacing:-1px;">영어 3-4학년</h2>
+        <h2 style="font-size:2.3rem;color:#10b981;font-weight:700;text-align:center;letter-spacing:-1px;">영어 AIDT</h2>
         <div class="aidt-title-btns">
           <a href="#" class="aidt-title-btn">교과서 목차(3학년)</a>
           <a href="#" class="aidt-title-btn">교과서 목차(4학년)</a>
@@ -982,79 +976,70 @@
         </div>
           </div>
       <div class="aidt-feature-wrap english">
-        <div class="aidt-feature-title">AIDT 영어 3-4학년의 5가지 특징</div>
+        <div class="aidt-feature-title">AIDT 영어의 5가지 특징</div>
         <div class="aidt-feature-media">
           <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=480&q=80" alt="영어 3-4학년 샘플 이미지" />
         </div>
         <div class="aidt-feature-list">
           <div class="aidt-feature-card">
             <div class="aidt-feature-icon">📝</div>
-            <div class="aidt-feature-label">개인별 수업 설계</div>
-            <div class="aidt-feature-desc">학생별 맞춤형 수업 플랜 제공</div>
+            <div class="aidt-feature-label">편리한 UI/UX</div>
+            <div class="aidt-feature-desc">편리하고 직관적인 화면 구성</div>
           </div>
           <div class="aidt-feature-card">
             <div class="aidt-feature-icon">💪</div>
-            <div class="aidt-feature-label">자기주도 역량 강화</div>
-            <div class="aidt-feature-desc">스스로 학습하는 힘을 키우는 프로그램</div>
+            <div class="aidt-feature-label">풍부한 수준별 자료</div>
+            <div class="aidt-feature-desc">다양한 난이도의 학습 자료 제공</div>
         </div>
           <div class="aidt-feature-card">
             <div class="aidt-feature-icon">🧭</div>
-            <div class="aidt-feature-label">AI 추천 학습 경로</div>
-            <div class="aidt-feature-desc">AI가 제안하는 최적의 학습 동선</div>
+            <div class="aidt-feature-label">재미있는 조작형 콘텐츠</div>
+            <div class="aidt-feature-desc">직접 참여하는 인터랙티브 콘텐츠</div>
       </div>
           <div class="aidt-feature-card">
             <div class="aidt-feature-icon">🗂️</div>
-            <div class="aidt-feature-label">AI 문항 추천</div>
-            <div class="aidt-feature-desc">학생 수준에 맞는 문제 자동 추천</div>
+            <div class="aidt-feature-label">AI 보조교사, AI 튜터</div>
+            <div class="aidt-feature-desc">AI가 학습을 도와주는 보조교사/튜터 역할</div>
       </div>
           <div class="aidt-feature-card">
             <div class="aidt-feature-icon">🎯</div>
-            <div class="aidt-feature-label">맞춤 피드백</div>
-            <div class="aidt-feature-desc">개별 학습 결과에 따른 피드백 제공</div>
+            <div class="aidt-feature-label">분석 대시보드</div>
+            <div class="aidt-feature-desc">학습 결과를 한눈에 분석</div>
           </div>
         </div>
       </div>
     </section>
-    <section id="english-5-6" style="background:linear-gradient(135deg,#bbf7d0 0%,#a7f3d0 100%);border-radius:24px;padding:56px 0 48px 0;margin-bottom:48px;box-shadow:0 4px 24px rgba(16,185,129,0.10);">
-      <div class="aidt-title-row">
-        <h2 style="font-size:2.3rem;color:#10b981;font-weight:700;text-align:center;letter-spacing:-1px;">영어 5-6학년</h2>
-        <div class="aidt-title-btns">
-          <a href="#" class="aidt-title-btn">교과서 목차(5학년)</a>
-          <a href="#" class="aidt-title-btn">교과서 목차(6학년)</a>
-          <a href="#" class="aidt-title-btn">선정사유서</a>
+    
+    
+
+    <!-- 영상 소개 섹션 -->
+    <section style="background:linear-gradient(135deg,#f3f8ff 0%,#e8f2ff 100%); border-radius:24px; padding:56px 0 48px 0; margin-bottom:48px; box-shadow:0 4px 24px rgba(123,110,234,0.10);">
+      <div style="max-width:1000px; margin:0 auto; text-align:center;">
+        <h2 style="font-size:2.3rem; color:#7b6eea; font-weight:800; margin-bottom:1.2rem; letter-spacing:-1px;">AI 디지털교과서 사용 매뉴얼</h2>
+        <div style="font-size:1.18rem; color:#444; margin-bottom:2.5rem; font-weight:500;">AI 디지털교과서 수업 모델의 실제 활용 모습을 영상으로 만나보세요.</div>
+        <div style="display:flex; justify-content:center; align-items:center;">
+          <!-- 영상 플레이스홀더: 실제 영상 파일/유튜브/iframe 등으로 교체 가능 -->
+          <div style="width:640px; max-width:90vw; aspect-ratio:16/9; background:#e5e7eb; border-radius:18px; box-shadow:0 2px 16px #7b6eea22; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+            <span style="font-size:3.2rem; color:#bdbdbd;">▶</span>
           </div>
         </div>
-      <div class="aidt-feature-wrap english">
-        <div class="aidt-feature-title">AIDT 영어 5-6학년의 5가지 특징</div>
-        <div class="aidt-feature-media">
-          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=480&q=80" alt="영어 5-6학년 샘플 이미지" />
       </div>
-        <div class="aidt-feature-list">
-          <div class="aidt-feature-card">
-            <div class="aidt-feature-icon">📝</div>
-            <div class="aidt-feature-label">개인별 수업 설계</div>
-            <div class="aidt-feature-desc">학생별 맞춤형 수업 플랜 제공</div>
-          </div>
-          <div class="aidt-feature-card">
-            <div class="aidt-feature-icon">💪</div>
-            <div class="aidt-feature-label">자기주도 역량 강화</div>
-            <div class="aidt-feature-desc">스스로 학습하는 힘을 키우는 프로그램</div>
-        </div>
-          <div class="aidt-feature-card">
-            <div class="aidt-feature-icon">🧭</div>
-            <div class="aidt-feature-label">AI 추천 학습 경로</div>
-            <div class="aidt-feature-desc">AI가 제안하는 최적의 학습 동선</div>
-      </div>
-          <div class="aidt-feature-card">
-            <div class="aidt-feature-icon">🗂️</div>
-            <div class="aidt-feature-label">AI 문항 추천</div>
-            <div class="aidt-feature-desc">학생 수준에 맞는 문제 자동 추천</div>
-            </div>
-          <div class="aidt-feature-card">
-            <div class="aidt-feature-icon">🎯</div>
-            <div class="aidt-feature-label">맞춤 피드백</div>
-            <div class="aidt-feature-desc">개별 학습 결과에 따른 피드백 제공</div>
-          </div>
+    </section>
+
+    <!-- 사용 매뉴얼 섹션 -->
+    <section style="background:linear-gradient(135deg,#f8f9ff 0%,#e8f2ff 100%); border-radius:24px; padding:56px 0 48px 0; margin-bottom:48px; box-shadow:0 4px 24px rgba(16,185,129,0.10);">
+      <div style="max-width:1200px; margin:0 auto; text-align:center;">
+        <h2 style="font-size:2.3rem; color:#10b981; font-weight:700; margin-bottom:1rem; letter-spacing:-1px;">사용 매뉴얼</h2>
+        <div style="font-size:1.4rem; color:#444; margin-bottom:3rem; font-weight:600;">스마트폰 사용하는 것만큼<br>쉽고 간단해요.</div>
+        <div style="display:flex; gap:32px; justify-content:center; flex-wrap:wrap;">
+          <a href="#" style="background:#fff; color:#10b981; border:2px solid #10b981; border-radius:16px; padding:20px 40px; font-size:1.2rem; font-weight:700; text-decoration:none; box-shadow:0 4px 16px rgba(16,185,129,0.15); display:flex; align-items:center; gap:12px; transition:all 0.2s; min-width:200px; justify-content:center;">
+            <span style="font-size:1.4rem;">📖</span>
+            선생님 매뉴얼 다운로드
+          </a>
+          <a href="#" style="background:#fff; color:#10b981; border:2px solid #10b981; border-radius:16px; padding:20px 40px; font-size:1.2rem; font-weight:700; text-decoration:none; box-shadow:0 4px 16px rgba(16,185,129,0.15); display:flex; align-items:center; gap:12px; transition:all 0.2s; min-width:200px; justify-content:center;">
+            <span style="font-size:1.4rem;">🎓</span>
+            학생 매뉴얼 다운로드
+          </a>
         </div>
       </div>
     </section>
@@ -1082,9 +1067,7 @@
     // 스크롤 위치에 따라 네비게이션 active 고정 및 표시 제어
     const navSections = [
       {id: 'math-3-4', menu: 'menu-math-3-4'},
-      {id: 'math-5-6', menu: 'menu-math-5-6'},
       {id: 'english-3-4', menu: 'menu-english-3-4'},
-      {id: 'english-5-6', menu: 'menu-english-5-6'},
       {id: 'experience-section', menu: 'menu-experience'}
     ];
     const floatingMenu = document.getElementById('floatingMenu');
@@ -1128,22 +1111,6 @@
     };
   </script>
 
-  <!-- 체험하기 섹션 -->
-  <section id="experience-section" style="max-width: 700px; margin: 100px auto 0 auto;">
-    <div class="experience-card" style="background:#1a2656; border-radius:24px; box-shadow:0 8px 32px rgba(30,41,80,0.18); display:flex; flex-direction:column; align-items:center; padding:38px 36px; gap:28px; min-height:140px;">
-      <div style="font-size:1.7rem; font-weight:800; color:#fff; margin-bottom:8px; letter-spacing:-1px; text-align:center; width:100%;">체험하기</div>
-      <div style="display:flex; gap:24px; justify-content:center; width:100%; flex-wrap:wrap;">
-        <button class="experience-teacher-btn" style="display:flex; align-items:center; gap:14px; background:#1e90ff; color:#fff; border:none; border-radius:16px; padding:18px 36px; font-size:1.18rem; font-weight:700; box-shadow:0 2px 8px rgba(30,144,255,0.10); cursor:pointer; transition:background 0.18s;">
-          <span style="font-size:2rem;">👩‍🏫</span>
-          <span>선생님 화면</span>
-        </button>
-        <button class="experience-student-btn" style="display:flex; align-items:center; gap:14px; background:#43b97f; color:#fff; border:none; border-radius:16px; padding:18px 36px; font-size:1.18rem; font-weight:700; box-shadow:0 2px 8px rgba(67,185,127,0.10); cursor:pointer; transition:background 0.18s;">
-          <span style="font-size:2rem;">🧑‍🎓</span>
-          <span>학생 화면</span>
-        </button>
-      </div>
-    </div>
-  </section>
   <style>
     @media (max-width: 900px) {
       #experience-section .experience-card {
@@ -1334,5 +1301,49 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 최초 로드시 "체험하기"에 active 부여
+  document.querySelectorAll('.timeline-menu a').forEach(l => l.classList.remove('active'));
+  document.getElementById('menu-experience').classList.add('active');
+
+  document.querySelectorAll('.timeline-menu a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault(); // 브라우저의 기본 해시 이동 막기
+      document.querySelectorAll('.timeline-menu a').forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+      // 해당 섹션으로 스크롤 이동
+      const targetId = this.getAttribute('href').replace('#', '');
+      const target = document.getElementById(targetId);
+      if (target) {
+        window.scrollTo({ top: target.offsetTop - 40, behavior: 'smooth' });
+      }
+    });
+  });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 기존 네비게이션 active 코드 ...
+
+  // 플로팅 메뉴(네비게이션 바) 표시 타이밍 제어
+  const floatingMenu = document.getElementById('floatingMenu');
+  const experienceSection = document.getElementById('experience-section');
+
+  function updateFloatingMenu() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const triggerY = experienceSection.getBoundingClientRect().top + window.scrollY - 80; // 네비 상단 여백 보정
+    if (scrollY + 60 >= triggerY) { // 60px은 네비가 살짝 일찍 뜨게 조정
+      floatingMenu.classList.remove('hide');
+    } else {
+      floatingMenu.classList.add('hide');
+    }
+  }
+
+  window.addEventListener('scroll', updateFloatingMenu);
+  updateFloatingMenu(); // 최초 1회 실행
+});
+</script>
+
 </body>
 </html> 
